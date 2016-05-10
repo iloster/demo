@@ -70,7 +70,7 @@ end
 
 function MainScene:toGameScene()
 	print("进入GameScene------------")
-	app:enterScene("GameScene")
+	app:enterScene("LevelScene")
 	-- app:enterScene("GameScene", nil, "SLIDEINT", 1.0)
 end
 
