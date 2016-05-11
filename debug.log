@@ -1,5 +1,5 @@
 cocos2d: ------------------------------------------------
-cocos2d: LOAD LUA FILE: /Users/cheng/Documents/CocosProjects/demo/src/main.lua
+cocos2d: LOAD LUA FILE: /Users/mac/Documents/CocosProjects/demo/src/main.lua
 cocos2d: ------------------------------------------------
 cocos2d: ===========================================================
 cocos2d:               LOAD QUICK FRAMEWORK
@@ -10,7 +10,7 @@ cocos2d: [INFO] #
 cocos2d: [INFO] # device.platform              = mac
 cocos2d: [INFO] # device.model                 = unknown
 cocos2d: [INFO] # device.language              = cn
-cocos2d: [INFO] # device.writablePath          = /Users/cheng/Documents/CocosProjects/demo/
+cocos2d: [INFO] # device.writablePath          = /Users/mac/Documents/CocosProjects/demo/
 cocos2d: [INFO] # device.directorySeparator    = /
 cocos2d: [INFO] # device.pathSeparator         = :
 cocos2d: [INFO] #
@@ -35,39 +35,11 @@ cocos2d: [INFO] # display.c_top                = 480.00
 cocos2d: [INFO] # display.c_bottom             = -480.00
 cocos2d: [INFO] #
 cocos2d: 进入GameScene------------
-cocos2d: dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src/app/scenes/LevelScene.lua"]:64: in function 'toGameScene'
+cocos2d: dump from: [string "/Users/mac/Documents/CocosProjects/demo/src/app/scenes/LevelScene.lua"]:76: in function 'toGameScene'
 cocos2d: - "<var>" = {
 cocos2d: -     "level" = 1
 cocos2d: - }
-cocos2d: dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src/app/scenes/LevelScene.lua"]:64: in function 'toGameScene'
+cocos2d: dump from: [string "/Users/mac/Documents/CocosProjects/demo/src/app/scenes/GameScene.lua"]:17: in function 'ctor'
 cocos2d: - "<var>" = {
-cocos2d: -     "level" = 2
-cocos2d: - }
-cocos2d: dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src/app/scenes/LevelScene.lua"]:64: in function 'toGameScene'
-cocos2d: - "<var>" = {
-cocos2d: -     "level" = 3
-cocos2d: - }
-cocos2d: dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src/app/scenes/LevelScene.lua"]:64: in function 'toGameScene'
-cocos2d: - "<var>" = {
-cocos2d: -     "level" = 4
-cocos2d: - }
-cocos2d: dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src/app/scenes/LevelScene.lua"]:64: in function 'toGameScene'
-cocos2d: - "<var>" = {
-cocos2d: -     "level" = 8
-cocos2d: - }
-cocos2d: dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src/app/scenes/LevelScene.lua"]:64: in function 'toGameScene'
-cocos2d: - "<var>" = {
-cocos2d: -     "level" = 7
-cocos2d: - }
-cocos2d: dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src/app/scenes/LevelScene.lua"]:64: in function 'toGameScene'
-cocos2d: - "<var>" = {
-cocos2d: -     "level" = 6
-cocos2d: - }
-cocos2d: dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src/app/scenes/LevelScene.lua"]:64: in function 'toGameScene'
-cocos2d: - "<var>" = {
-cocos2d: -     "level" = 5
-cocos2d: - }
-cocos2d: dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src/app/scenes/LevelScene.lua"]:64: in function 'toGameScene'
-cocos2d: - "<var>" = {
-cocos2d: -     "level" = 5
+cocos2d: -     "level" = 1
 cocos2d: - }

@@ -1,6 +1,7 @@
 local LevelScene = class("LevelScene",function()
 		return display.newScene("LevelScene")
 end)
+local LevelData = require("app.data.LevelData")
 
 function LevelScene:ctor()
 	-- body
@@ -33,8 +34,12 @@ function LevelScene:createLevel()
 	local levelImages = {
 		normal = "circle_normal.png",
 		pressed = "circle_press.png",
+		disabled ="circle_disable.png",
 	}
    local Space = (display.width - 400)/5
+   self.m_levelBtn = {}
+   local level = LevelData.getLevel()
+
    for i = 0,7 do
    		local row = i%4 + 1
    		local col = math.floor(i/4) + 1
@@ -43,24 +48,32 @@ function LevelScene:createLevel()
    		if col == 1 then
    			y = display.cy - (-1) * Space
    		end
-		cc.ui.UIPushButton.new(levelImages)
-			:setButtonLabel("normal", cc.ui.UILabel.new({
-				 UILabelType = 2,
-				 text = i+1,
-				 size = 32,
-				 color = cc.c3b(0,0,0)
-			}))
-			:align(display.CENTER, x, y)
-			:onButtonClicked(function(event)
+   		--local buttonStatus = ""
+		self.m_levelBtn[i+1] = cc.ui.UIPushButton.new(levelImages)
+		if i<level then
+			self.m_levelBtn[i+1]:setButtonLabel("normal", cc.ui.UILabel.new({
+					 UILabelType = 2,
+					 text = i+1,
+					 size = 32,
+					 color = cc.c3b(0,0,0)
+				}))
+			self.m_levelBtn[i+1]:onButtonClicked(function(event)
 				local data = {}
 				data.level = i + 1
-				 self:toGameScene(data)
+				 	self:toGameScene(data)
 				end)	
-			:addTo(self)
+		else
+			self.m_levelBtn[i+1]:setButtonEnabled(false)
+		end
+		self.m_levelBtn[i+1]:align(display.CENTER, x, y)
+		
+		self.m_levelBtn[i+1]:addTo(self)
 	end
 end
 
+
 function LevelScene:toGameScene(data)
 	dump(data)
+	app:enterScene("GameScene", {data},"fade", 0.6,display.COLOR_WHITE)
 end
 return LevelScene

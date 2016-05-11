@@ -13,7 +13,8 @@ local CUBE_SPACE_BOTTOM = 50
 local CUBE_SPACE = 10
 local CUBE_SIZE = (display.width - CUBE_SPACE*3 - 2*CUBE_SPACE_LEFT)/4
 
-function GameScene:ctor()
+function GameScene:ctor(data)
+	dump(data)
 	self:createBg()
 	self:createGame()
 	self:createTouchLayer()
