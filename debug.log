@@ -34,12 +34,9 @@ cocos2d: [INFO] # display.c_right              = 320.00
 cocos2d: [INFO] # display.c_top                = 480.00
 cocos2d: [INFO] # display.c_bottom             = -480.00
 cocos2d: [INFO] #
-cocos2d: 进入GameScene------------
-cocos2d: dump from: [string "/Users/mac/Documents/CocosProjects/demo/src/app/scenes/LevelScene.lua"]:76: in function 'toGameScene'
+cocos2d: true
+cocos2d: 进入LevelScene------------
+cocos2d: dump from: [string "/Users/mac/Documents/CocosProjects/demo/src/app/framework/Director.lua"]:12: in function 'runWithScene'
 cocos2d: - "<var>" = {
-cocos2d: -     "level" = 1
-cocos2d: - }
-cocos2d: dump from: [string "/Users/mac/Documents/CocosProjects/demo/src/app/scenes/GameScene.lua"]:17: in function 'ctor'
-cocos2d: - "<var>" = {
-cocos2d: -     "level" = 1
+cocos2d: -     1 = "MainScene"
 cocos2d: - }

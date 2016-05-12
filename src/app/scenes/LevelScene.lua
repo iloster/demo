@@ -8,6 +8,7 @@ function LevelScene:ctor()
 	
 	self:createBg()
 	self:createLevel()
+	self:createBottom()
 end
 
 function LevelScene:onEnter()
@@ -28,6 +29,32 @@ function LevelScene:createBg()
 		color = cc.c3b(0,0, 0) })
 	:align(display.CENTER_TOP, display.left+display.width/2, display.top - 170)
 	:addTo(self)
+end
+
+function LevelScene:createBottom()
+	self.m_bottomNode = app:createView("BottomView")
+	self.m_bottomNode:pos(0,0)
+    self.m_bottomNode:addTo(self)
+    
+    self.m_bottomNode:setLeftButton({
+    		images = {
+    			normal = "back_normal.png",
+    			pressed = "back_press.png"
+    		},
+    		click = function()
+    			g_Director:popScene()
+    		end
+    	})
+
+    self.m_bottomNode:setRightButton({
+    	images = {
+    			normal = "help_normal.png",
+    			pressed = "help_press.png"
+    		},
+    		click = function()
+    			app:createView("HelpView"):addTo(self)
+    		end
+    	})
 end
 
 function LevelScene:createLevel() 
@@ -74,6 +101,7 @@ end
 
 function LevelScene:toGameScene(data)
 	dump(data)
-	app:enterScene("GameScene", {data},"fade", 0.6,display.COLOR_WHITE)
+	--app:enterScene("GameScene", {data},"fade", 0.6,display.COLOR_WHITE)
+	app:createView("HelpView"):addTo(self)
 end
 return LevelScene

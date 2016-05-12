@@ -12,13 +12,16 @@ function MainScene:ctor()
     --创建一个背景
     self:createBg()
     self:createBtn()
+    self:createBottom()
 
 end
 
 function MainScene:onEnter()
+
 end
 
 function MainScene:onExit()
+
 end
 
 
@@ -49,29 +52,82 @@ function MainScene:createBtn()
 	:addTo(self)
 
 	local btnImages = {
-		normal = "GreenButton.png",
-		pressed = "GreenScale9Block.png",
+		normal = "btn.png",
+		pressed = "btn_press.png",
 		disabled = "GreenButton.png",
 	}
 
 	cc.ui.UIPushButton.new(btnImages,{scale9 = true})
-		:setButtonSize(200,60)
+		:setButtonSize(250,90)
 		:setButtonLabel("normal", cc.ui.UILabel.new({
 			 UILabelType = 2,
-			 text = "start",
-			 size = 32
+			 text = "立即游戏",
+			 size = 32,
+			 color=cc.c3b(0,0,0)
 		}))
-		:align(display.CENTER, display.cx, display.cy)
+		:align(display.CENTER, display.cx, display.cy+100)
 		:onButtonClicked(function(event)
 				self:toGameScene()
 			end)	
 		:addTo(self)
+
+	cc.ui.UIPushButton.new(btnImages,{scale9 = true})
+		:setButtonSize(250,90)
+		:setButtonLabel("normal", cc.ui.UILabel.new({
+			 UILabelType = 2,
+			 text = "选择关卡",
+			 size = 32,
+			 color=cc.c3b(0,0,0)
+		}))
+		:align(display.CENTER, display.cx, display.cy-60)
+		:onButtonClicked(function(event)
+				self:toLevelScene()
+			end)	
+		:addTo(self)
+end
+
+function MainScene:createBottom()
+	self.m_bottomNode = app:createView("BottomView")
+	self.m_bottomNode:pos(0,0)
+    self.m_bottomNode:addTo(self)
+    
+    self.m_bottomNode:setLeftCheckBox({
+    		images = {
+    			off = "voice_open.png",
+    			on = "voice_close.png"
+    		},
+    		click = function(state)
+    		--true 表示 关闭声音 
+    		--false 表示 打开声音
+    			print(state)
+    		end
+    	})
+
+    self.m_bottomNode:setRightButton({
+    	images = {
+    			normal = "help_normal.png",
+    			pressed = "help_press.png"
+    		},
+    		click = function()
+    			app:createView("helpView"):addTo(self)
+    		end
+    	})
 end
 
 function MainScene:toGameScene()
 	print("进入GameScene------------")
-	app:enterScene("LevelScene")
+	--app:enterScene("GameScene")
 	-- app:enterScene("GameScene", nil, "SLIDEINT", 1.0)
+	g_Director:runWithScene("GameScene")
 end
 
+function MainScene:toLevelScene()
+	print("进入LevelScene------------")
+	g_Director:runWithScene("LevelScene")
+end
+
+function MainScene:toAboutScene()
+	print("进入About------------")
+	app:enterScene("AboutScene")
+end
 return MainScene

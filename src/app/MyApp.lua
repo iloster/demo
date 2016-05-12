@@ -2,8 +2,7 @@
 require("config")
 require("framework.init")
 
-
-Scenes = require("app.config.Scenes")
+require("app.framework.init")
 local MyApp = class("MyApp", cc.mvc.AppBase)
 
 function MyApp:ctor()
