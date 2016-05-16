@@ -8,6 +8,14 @@ local colors = {
     [3]   = cc.c3b(0xed, 0xcf, 0x72),
     [4]   = cc.c3b(0xed, 0xcc, 0x61),
 }
+local LevelConfig ={
+	bg = 1,
+	game = 2,
+	shade = 3,
+	btn = 4,
+	touch = 5,
+	dialog =6,
+}
 local CUBE_SPACE_LEFT = 20
 local CUBE_SPACE_BOTTOM = 150
 local CUBE_SPACE = 10
@@ -31,7 +39,7 @@ end
 
 --创建游戏背景
 function GameScene:createBg()
-	display.newColorLayer(cc.c4b(0xfa,0xf8,0xef, 255)):addTo(self)
+	display.newColorLayer(cc.c4b(0xfa,0xf8,0xef, 255)):addTo(self,LevelConfig["bg"])
 
 	self.m_testTxt = cc.ui.UILabel.new({
 		UILabelType = 2,
@@ -40,24 +48,24 @@ function GameScene:createBg()
 		color = cc.c3b(0,0,0),
 		})
 	--self.m_testTxt:pos(100,100)
-	self.m_testTxt:align(display.CENTER_TOP, display.cx, display.top )
-	self.m_testTxt:addTo(self)
+	self.m_testTxt:align(display.CENTER_TOP, display.cx, display.top)
+	self.m_testTxt:addTo(self,LevelConfig["btn"])
 	--游戏区域所占的部分
 	local gameSize= 4*CUBE_SIZE+CUBE_SPACE*3
 	--左边
-	 cc.LayerColor:create(cc.c4b(0xfa,0xf8,0xef,255),CUBE_SPACE_LEFT,display.height):align(display.LEFT_BOTTOM,0,0):addTo(self,1)
+	 cc.LayerColor:create(cc.c4b(0xfa,0xf8,0xef,255),CUBE_SPACE_LEFT,display.height):align(display.LEFT_BOTTOM,0,0):addTo(self,LevelConfig["shade"])
 	 --底部
-	 cc.LayerColor:create(cc.c4b(0xfa,0xf8,0xef,255),display.width,CUBE_SPACE_BOTTOM):align(display.LEFT_BOTTOM,0,0):addTo(self,1)
+	 cc.LayerColor:create(cc.c4b(0xfa,0xf8,0xef,255),display.width,CUBE_SPACE_BOTTOM):align(display.LEFT_BOTTOM,0,0):addTo(self,LevelConfig["shade"])
 	 --上面
-	 cc.LayerColor:create(cc.c4b(0xfa,0xf8,0xef,255),display.width,display.height - gameSize - CUBE_SPACE_BOTTOM ):align(display.LEFT_BOTTOM,0,CUBE_SPACE_BOTTOM+4*CUBE_SIZE+CUBE_SPACE*3):addTo(self,1)
+	 cc.LayerColor:create(cc.c4b(0xfa,0xf8,0xef,255),display.width,display.height - gameSize - CUBE_SPACE_BOTTOM ):align(display.LEFT_BOTTOM,0,CUBE_SPACE_BOTTOM+4*CUBE_SIZE+CUBE_SPACE*3):addTo(self,LevelConfig["shade"])
 	 --右边
-	 cc.LayerColor:create(cc.c4b(0xfa,0xf8,0xef,255),CUBE_SPACE_LEFT,CUBE_SPACE_BOTTOM+(CUBE_SIZE+CUBE_SPACE)*5):align(display.LEFT_BOTTOM,CUBE_SPACE_LEFT+CUBE_SIZE*4+CUBE_SPACE*7/2,0):addTo(self,1)
+	 cc.LayerColor:create(cc.c4b(0xfa,0xf8,0xef,255),CUBE_SPACE_LEFT,CUBE_SPACE_BOTTOM+(CUBE_SIZE+CUBE_SPACE)*5):align(display.LEFT_BOTTOM,CUBE_SPACE_LEFT+CUBE_SIZE*4+CUBE_SPACE*7/2,0):addTo(self,LevelConfig["shade"])
 end
 
 function GameScene:createBottom()
 	self.m_bottomNode = app:createView("BottomView")
 	self.m_bottomNode:pos(0,0)
-    self.m_bottomNode:addTo(self,4)
+    self.m_bottomNode:addTo(self,LevelConfig["btn"])
     
     self.m_bottomNode:setLeftButton({
     		images = {
@@ -75,7 +83,7 @@ function GameScene:createBottom()
     			pressed = "help_press.png"
     		},
     		click = function()
-    			app:createView("HelpView"):addTo(self)
+    			app:createView("HelpView"):addTo(self,LevelConfig["dialog"])
     		end
     	})
 end
@@ -101,7 +109,7 @@ function GameScene:createGame()
 			self.m_cubeArr[i][j]= app:createView("CubeView",data)
 			self.m_cubeArr[i][j]:align(display.LEFT_BOTTOM,(CUBE_SPACE+CUBE_SIZE) * (i-1) + CUBE_SPACE_LEFT,CUBE_SPACE_BOTTOM+(CUBE_SPACE + CUBE_SIZE) * (j-1))
 			self.m_cubeArr[i][j]:size(CUBE_SIZE, CUBE_SIZE)
-			self.m_cubeArr[i][j]:addTo(self)		
+			self.m_cubeArr[i][j]:addTo(self,LevelConfig["game"])		
 		end
 	end
 
@@ -114,13 +122,13 @@ function GameScene:createCube(data)
 	local cube = app:createView("CubeView",data)
 	cube:align(display.LEFT_BOTTOM,(CUBE_SPACE+CUBE_SIZE) * (data.i-1) + CUBE_SPACE_LEFT,CUBE_SPACE_BOTTOM+(CUBE_SPACE + CUBE_SIZE) * (data.j-1))
 	cube:size(CUBE_SIZE, CUBE_SIZE)
-	cube:addTo(self)	
+	cube:addTo(self,LevelConfig["game"])	
 	return cube
 end
 
 function GameScene:createTouchLayer()
 	self.m_touchLayer = display.newLayer()
-	self.m_touchLayer:addTo(self)
+	self.m_touchLayer:addTo(self,LevelConfig["game"])
 	self.m_touchLayer:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
         return self:onTouch(event.name, event.x, event.y)
     end)

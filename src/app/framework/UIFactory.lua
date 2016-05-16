@@ -15,7 +15,13 @@ function UIFactory:createButton()
 	return 
 end
 
-function UIFactory:createLabel()
+
+--参数：
+-- UILabelType = 2,
+--	text = "选择游戏关卡",
+--	size = 32,
+--	color = cc.c3b(0,0, 0)
+function UIFactory:createLabel(data)
 	if data then
 		return cc.ui.UILabel.new(data)
 	end
