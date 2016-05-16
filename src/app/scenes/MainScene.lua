@@ -114,7 +114,7 @@ function MainScene:createBottom()
     			pressed = "help_press.png"
     		},
     		click = function()
-    			app:createView("helpView"):addTo(self,LevelConfig["dialog"])
+    			app:createView("HelpView"):addTo(self,LevelConfig["dialog"])
     		end
     	})
 end

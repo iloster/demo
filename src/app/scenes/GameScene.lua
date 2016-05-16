@@ -297,6 +297,7 @@ function GameScene:moveCol(n)
           				self.m_cubeArr[n][4] = tmpCube   
           				if self:checkGameOver() then
 							print("gameOver")
+							self:showGameOver()
 						end     		
           			end
 
@@ -362,6 +363,7 @@ function GameScene:moveRow(n)
           				self.m_cubeArr[4][n] = tmpCube 
           				if self:checkGameOver() then
 							print("gameOver")
+							self:showGameOver()
 						end       		
           			end
           			
@@ -391,6 +393,10 @@ function GameScene:compare4Num(a,b,c,d)
 	else
 		return false
 	end
+end
+
+function GameScene:showGameOver()
+	app:createView("DialogView"):addTo(self,LevelConfig["dialog"])
 end
 
 return GameScene

@@ -12,7 +12,7 @@ function BottomView:setLeftButton(data)
 	local leftBtnImages = data.images
 	self.m_leftBtn = cc.ui.UIPushButton.new(leftBtnImages)
 	self.m_leftBtn:align(display.BOTTOM_LEFT, 50, 50)
-	self.m_leftBtn:setScale(0.5)
+	self.m_leftBtn:setScale(0.8)
 	self.m_leftBtn:addTo(self)
 	self.m_leftBtn:onButtonClicked(function()
 			data.click()
