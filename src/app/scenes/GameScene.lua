@@ -9,7 +9,7 @@ local colors = {
     [4]   = cc.c3b(0xed, 0xcc, 0x61),
 }
 local CUBE_SPACE_LEFT = 20
-local CUBE_SPACE_BOTTOM = 50
+local CUBE_SPACE_BOTTOM = 150
 local CUBE_SPACE = 10
 local CUBE_SIZE = (display.width - CUBE_SPACE*3 - 2*CUBE_SPACE_LEFT)/4
 
@@ -18,6 +18,7 @@ function GameScene:ctor(data)
 	self:createBg()
 	self:createGame()
 	self:createTouchLayer()
+	self:createBottom()
 end
 
 function GameScene:onEnter()
@@ -53,6 +54,31 @@ function GameScene:createBg()
 	 cc.LayerColor:create(cc.c4b(0xfa,0xf8,0xef,255),CUBE_SPACE_LEFT,CUBE_SPACE_BOTTOM+(CUBE_SIZE+CUBE_SPACE)*5):align(display.LEFT_BOTTOM,CUBE_SPACE_LEFT+CUBE_SIZE*4+CUBE_SPACE*7/2,0):addTo(self,1)
 end
 
+function GameScene:createBottom()
+	self.m_bottomNode = app:createView("BottomView")
+	self.m_bottomNode:pos(0,0)
+    self.m_bottomNode:addTo(self,4)
+    
+    self.m_bottomNode:setLeftButton({
+    		images = {
+    			normal = "back_normal.png",
+    			pressed = "back_press.png"
+    		},
+    		click = function()
+    			g_Director:popScene()
+    		end
+    	})
+
+    self.m_bottomNode:setRightButton({
+    	images = {
+    			normal = "help_normal.png",
+    			pressed = "help_press.png"
+    		},
+    		click = function()
+    			app:createView("HelpView"):addTo(self)
+    		end
+    	})
+end
 --创建步区域
 function GameScene:creatStep()
 	self.m_stepTxt = cc.ui.UILabel.new({
@@ -61,6 +87,7 @@ function GameScene:creatStep()
 		  color = display.COLOR_BLUE,
 		}) 
 end
+
 
 --创建游戏区域
 function GameScene:createGame()
