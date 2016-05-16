@@ -57,8 +57,8 @@ function MainScene:createBtn()
 		disabled = "GreenButton.png",
 	}
 
-	cc.ui.UIPushButton.new(btnImages,{scale9 = true})
-		:setButtonSize(250,90)
+	cc.ui.UIPushButton.new(btnImages)
+		--:setButtonSize(250,90)
 		:setButtonLabel("normal", cc.ui.UILabel.new({
 			 UILabelType = 2,
 			 text = "立即游戏",
@@ -71,8 +71,8 @@ function MainScene:createBtn()
 			end)	
 		:addTo(self)
 
-	cc.ui.UIPushButton.new(btnImages,{scale9 = true})
-		:setButtonSize(250,90)
+	cc.ui.UIPushButton.new(btnImages)
+		--:setButtonSize(250,90)
 		:setButtonLabel("normal", cc.ui.UILabel.new({
 			 UILabelType = 2,
 			 text = "选择关卡",
