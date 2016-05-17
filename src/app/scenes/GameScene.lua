@@ -20,7 +20,7 @@ local CUBE_SPACE_LEFT = 20
 local CUBE_SPACE_BOTTOM = 150
 local CUBE_SPACE = 10
 local CUBE_SIZE = (display.width - CUBE_SPACE*3 - 2*CUBE_SPACE_LEFT)/4
-
+local Move_Time = 0.5
 function GameScene:ctor(data)
 	dump(data)
 	self:createBg()
@@ -164,87 +164,148 @@ function GameScene:handleMoved()
 	if self.m_startY > 0 and self.m_startY < CUBE_SIZE + CUBE_SPACE_BOTTOM + 1/2*CUBE_SPACE then
 		if math.abs(self.m_startX - self.m_endX) >= math.abs(self.m_startY - self.m_endY) then
 			--dump(self.m_endX - self.m_startX)
+			local data = {}
+			data.direction = 0
 			if self.m_endX - self.m_startX >= 0 then
-				self:moveRow(1)
+				--self:moveRow(1)
+				data.offset = 1
 			else
-				self:moveRow(-1)
+				-- self:moveRow(-1)
+				data.offset = -1
 		    end
+		    self:addMove(data)
 		end
 	end
 	if self.m_startY > CUBE_SIZE + CUBE_SPACE_BOTTOM + 1/2*CUBE_SPACE  and self.m_startY < 2*CUBE_SIZE + CUBE_SPACE_BOTTOM + 1/2*CUBE_SPACE then
 		if math.abs(self.m_startX - self.m_endX) >= math.abs(self.m_startY - self.m_endY) then
 			--dump(self.m_endX - self.m_startX)
+			local data = {}
+			data.direction = 0
 			if self.m_endX - self.m_startX >= 0 then
-				self:moveRow(2)
+				-- self:moveRow(2)
+				data.offset = 2
 			else
-				self:moveRow(-2)
+				-- self:moveRow(-2)
+				data.offset = -2
 		    end
+		    self:addMove(data)
 		end
 	end
 	if self.m_startY > 2*CUBE_SIZE + CUBE_SPACE_BOTTOM + 1/2*CUBE_SPACE and self.m_startY < 3*CUBE_SIZE + CUBE_SPACE_BOTTOM + 1/2*CUBE_SPACE then
 		if math.abs(self.m_startX - self.m_endX) >= math.abs(self.m_startY - self.m_endY) then
 			--dump(self.m_endX - self.m_startX)
+			local data = {}
+			data.direction = 0
 			if self.m_endX - self.m_startX >= 0 then
-				self:moveRow(3)
+				-- self:moveRow(3)
+				data.offset = 3
 			else
-				self:moveRow(-3)
+				-- self:moveRow(-3)
+				data.offset = -3
 			end
+			self:addMove(data)
 		end
 	end
 	if self.m_startY > 3*CUBE_SIZE + CUBE_SPACE_BOTTOM + 1/2*CUBE_SPACE and self.m_startY < 4*CUBE_SIZE + CUBE_SPACE_BOTTOM + 1/2*CUBE_SPACE then
 		if math.abs(self.m_startX - self.m_endX) >= math.abs(self.m_startY - self.m_endY) then
+			local data = {}
+			data.direction = 0
 			if self.m_endX - self.m_startX >= 0 then
-				self:moveRow(4)
+				-- self:moveRow(4)
+				data.offset = 4
 			else
-				self:moveRow(-4)
+				-- self:moveRow(-4)
+				data.offset = -4
 		    end
+		    self:addMove(data)
 		end
 	end
 
 	if self.m_startX > 0 and self.m_startX < CUBE_SIZE + CUBE_SPACE_LEFT + 1/2*CUBE_SPACE then
 		if math.abs(self.m_startX - self.m_endX) <= math.abs(self.m_startY - self.m_endY) then
 			--dump(self.m_endX - self.m_startX)
+			local data = {}
+			data.direction = 1
 			if self.m_endY - self.m_startY >= 0 then
-				self:moveCol(1)
+				-- self:moveCol(1)
+				data.offset = 1
 			else
-				self:moveCol(-1)
+				-- self:moveCol(-1)
+				data.offset = -1
 		    end
+		    self:addMove(data)
 		end
 	end
 	if self.m_startX > CUBE_SIZE + CUBE_SPACE_LEFT + 1/2*CUBE_SPACE  and self.m_startX < 2*CUBE_SIZE + CUBE_SPACE_LEFT + 1/2*CUBE_SPACE then
 		if math.abs(self.m_startX - self.m_endX) <= math.abs(self.m_startY - self.m_endY) then
 			--dump(self.m_endX - self.m_startX)
+			local data = {}
+			data.direction = 1
 			if self.m_endY - self.m_startY >= 0 then
-				self:moveCol(2)
+				--self:moveCol(2)
+				data.offset = 2
 			else
-				self:moveCol(-2)
+				--self:moveCol(-2)
+				data.offset = -2
 		    end
+		    self:addMove(data)
 		end
 	end
 	if self.m_startX > 2*CUBE_SIZE + CUBE_SPACE_LEFT + 1/2*CUBE_SPACE and self.m_startX < 3*CUBE_SIZE + CUBE_SPACE_LEFT + 1/2*CUBE_SPACE then
 		if math.abs(self.m_startX - self.m_endX) <= math.abs(self.m_startY - self.m_endY) then
 			--dump(self.m_endX - self.m_startX)
+			local data = {}
+			data.direction = 1
 			if self.m_endY - self.m_startY >= 0 then
-				self:moveCol(3)
+				--self:moveCol(3)
+				data.offset = 3
 			else
-				self:moveCol(-3)
+				--self:moveCol(-3)
+				data.offset = -3
 			end
+			self:addMove(data)
 		end
 	end
 	if self.m_startX > 3*CUBE_SIZE + CUBE_SPACE_LEFT + 1/2*CUBE_SPACE and self.m_startX < 4*CUBE_SIZE + CUBE_SPACE_LEFT + 1/2*CUBE_SPACE then
 		if math.abs(self.m_startX - self.m_endX) <= math.abs(self.m_startY - self.m_endY) then
+			local data = {}
+			data.direction = 1
 			if self.m_endY - self.m_startY >= 0 then
-				self:moveCol(4)
+				--self:moveCol(4)
+				data.offset = 4
 			else
-				self:moveCol(-4)
+				--self:moveCol(-4)
+				data.offset = -4
 		    end
+		    self:addMove(data)
 		end
 	end
 
 end
 
+function GameScene:addMove(data)
+	if not self.m_moveList then
+		self.m_moveList = {}
+	end
+	table.insert(self.m_moveList,data)
+	if not self.m_isRunning then
+		self:nextMove()
+	end
+end
+
+function GameScene:nextMove()
+	local data = table.remove(self.m_moveList,1)
+	if data then
+		if data.direction == 0 then
+			self:moveRow(data.offset)
+		else
+			self:moveCol(data.offset)
+		end
+	end
+end
 --列
 function GameScene:moveCol(n)
+	self.m_isRunning = true
 	print('col:'..n)
 	if n > 0 then
 		--向上移动
@@ -255,9 +316,9 @@ function GameScene:moveCol(n)
 		data.i = n
 		data.j = 0
 		local tmpCube = self:createCube(data)
-		tmpCube:moveBy(0.5, 0,CUBE_SIZE+CUBE_SPACE)
+		tmpCube:moveBy(Move_Time, 0,CUBE_SIZE+CUBE_SPACE)
 		for j = 1,4 do
-			transition.execute(self.m_cubeArr[n][j], cc.MoveBy:create(0.5,cc.p(0,CUBE_SIZE+CUBE_SPACE)), {
+			transition.execute(self.m_cubeArr[n][j], cc.MoveBy:create(Move_Time,cc.p(0,CUBE_SIZE+CUBE_SPACE)), {
       			delay = 0,
       			onComplete = function()
           			print("move completed")
@@ -266,7 +327,12 @@ function GameScene:moveCol(n)
           				for k = 3,1,-1 do
           					self.m_cubeArr[n][k%5+1] = self.m_cubeArr[n][k%5]
           				end  
-          				self.m_cubeArr[n][1] = tmpCube        		
+          				self.m_cubeArr[n][1] = tmpCube 
+          				self.m_isRunning = false  
+          				if self:checkGameOver() then
+							print("gameOver")
+							self:showGameOver()
+						end     		       		
           			end
      			end,
 	 		})
@@ -283,9 +349,9 @@ function GameScene:moveCol(n)
 		data.i = n
 		data.j = 5
 		local tmpCube = self:createCube(data)
-		tmpCube:moveBy(0.5, 0,-(CUBE_SIZE+CUBE_SPACE))
+		tmpCube:moveBy(Move_Time, 0,-(CUBE_SIZE+CUBE_SPACE))
 		for j = 1,4 do
-			transition.execute(self.m_cubeArr[n][j], cc.MoveBy:create(0.5,cc.p(0,-(CUBE_SIZE+CUBE_SPACE))), {
+			transition.execute(self.m_cubeArr[n][j], cc.MoveBy:create(Move_Time,cc.p(0,-(CUBE_SIZE+CUBE_SPACE))), {
       			delay = 0,
       			onComplete = function()
           			print("move completed")
@@ -294,7 +360,8 @@ function GameScene:moveCol(n)
           				for k = 1,3 do
           					self.m_cubeArr[n][k%5] = self.m_cubeArr[n][k%5+1]
           				end  
-          				self.m_cubeArr[n][4] = tmpCube   
+          				self.m_cubeArr[n][4] = tmpCube 
+          				self.m_isRunning = false  
           				if self:checkGameOver() then
 							print("gameOver")
 							self:showGameOver()
@@ -312,6 +379,7 @@ end
 --行
 function GameScene:moveRow(n)
 	print('row:'..n)
+	self.m_isRunning = true
 	if n > 0 then
 		--向右移动
 		--在0，n的位置生成一个cube 这个和 n,4相同
@@ -321,9 +389,9 @@ function GameScene:moveRow(n)
 		data.i = 0
 		data.j = n
 		local tmpCube = self:createCube(data)
-		tmpCube:moveBy(0.5,CUBE_SIZE+CUBE_SPACE,0)
+		tmpCube:moveBy(Move_Time,CUBE_SIZE+CUBE_SPACE,0)
 		for j = 1,4 do
-			transition.execute(self.m_cubeArr[j][n], cc.MoveBy:create(0.5,cc.p(CUBE_SIZE+CUBE_SPACE,0)), {
+			transition.execute(self.m_cubeArr[j][n], cc.MoveBy:create(Move_Time,cc.p(CUBE_SIZE+CUBE_SPACE,0)), {
       			delay = 0,
       			onComplete = function()
           			print("move completed")
@@ -332,7 +400,12 @@ function GameScene:moveRow(n)
           				for k = 3,1,-1 do
           					self.m_cubeArr[k%5+1][n] = self.m_cubeArr[k%5][n]
           				end  
-          				self.m_cubeArr[1][n] = tmpCube        		
+          				self.m_cubeArr[1][n] = tmpCube 
+          				self.m_isRunning = false  
+          				if self:checkGameOver() then
+							print("gameOver")
+							self:showGameOver()
+						end     		       		
           			end
      			end,
 	 		})
@@ -349,9 +422,9 @@ function GameScene:moveRow(n)
 		data.i = 5
 		data.j = n
 		local tmpCube = self:createCube(data)
-		tmpCube:moveBy(0.5,-(CUBE_SIZE+CUBE_SPACE),0)
+		tmpCube:moveBy(Move_Time,-(CUBE_SIZE+CUBE_SPACE),0)
 		for j = 1,4 do
-			transition.execute(self.m_cubeArr[j][n], cc.MoveBy:create(0.5,cc.p(-(CUBE_SIZE+CUBE_SPACE),0)), {
+			transition.execute(self.m_cubeArr[j][n], cc.MoveBy:create(Move_Time,cc.p(-(CUBE_SIZE+CUBE_SPACE),0)), {
       			delay = 0,
       			onComplete = function()
           			print("move completed")
@@ -361,10 +434,11 @@ function GameScene:moveRow(n)
           					self.m_cubeArr[k%5][n] = self.m_cubeArr[k%5+1][n]
           				end  
           				self.m_cubeArr[4][n] = tmpCube 
+          				self.m_isRunning = false  
           				if self:checkGameOver() then
 							print("gameOver")
 							self:showGameOver()
-						end       		
+						end     			
           			end
           			
      			end,
