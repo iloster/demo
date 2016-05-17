@@ -332,7 +332,9 @@ function GameScene:moveCol(n)
           				if self:checkGameOver() then
 							print("gameOver")
 							self:showGameOver()
-						end     		       		
+						else
+							self:nextMove()
+						end   		       		
           			end
      			end,
 	 		})
@@ -365,7 +367,9 @@ function GameScene:moveCol(n)
           				if self:checkGameOver() then
 							print("gameOver")
 							self:showGameOver()
-						end     		
+						else
+							self:nextMove()
+						end   		       		   		
           			end
 
      			end,
@@ -405,7 +409,9 @@ function GameScene:moveRow(n)
           				if self:checkGameOver() then
 							print("gameOver")
 							self:showGameOver()
-						end     		       		
+						else
+							self:nextMove()
+						end   		       		    		       		
           			end
      			end,
 	 		})
@@ -438,7 +444,9 @@ function GameScene:moveRow(n)
           				if self:checkGameOver() then
 							print("gameOver")
 							self:showGameOver()
-						end     			
+						else
+							self:nextMove()
+						end   		       		    			
           			end
           			
      			end,
