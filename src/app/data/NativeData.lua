@@ -11,7 +11,7 @@ local ParamType =
 }
 
 -- 保存
-function NativeData:saveValeForKey(val, key, type)
+function NativeData:saveValeForKey(key,val, type)
     if type == ParamType.String then
         cc.UserDefault:getInstance():setStringForKey(key, val)
     elseif type == ParamType.Integer then
@@ -23,6 +23,7 @@ function NativeData:saveValeForKey(val, key, type)
     elseif type == ParamType.Bool then
         cc.UserDefault:getInstance():setBoolForKey(key, val)
     end
+    cc.UserDefault:getInstance():flush()
 end
 
 -- 读取
@@ -39,6 +40,7 @@ function NativeData:getValeForKey( key, type, default)
     elseif type == ParamType.Bool then
         vale = cc.UserDefault:getInstance():getBoolForKey(key, default)
     end
+     dump(cc.UserDefault:getXMLFilePath())
     return vale
 end
 

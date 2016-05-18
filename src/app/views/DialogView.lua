@@ -32,7 +32,7 @@ function DialogView:ctor()
     self.m_nextBtn:addTo(self.m_dialogBg)
     self.m_nextBtn:setScale(1)
     self.m_nextBtn:onButtonClicked(function()
-            self:onNextClick()
+            self.onNextClick()
         end)
 
     self.m_nextTxt = cc.ui.UILabel.new({
@@ -54,7 +54,7 @@ function DialogView:ctor()
     self.m_resetBtn:addTo(self.m_dialogBg)
     self.m_resetBtn:setScale(1)
     self.m_resetBtn:onButtonClicked(function()
-            self:onRestClick()
+            self.onRestClick()
         end)
 
      self.m_resetTxt = cc.ui.UILabel.new({
@@ -67,12 +67,12 @@ function DialogView:ctor()
     self.m_resetTxt:addTo(self.m_dialogBg)
 end
 
-function DialogView:onNextClick()
-    print("DialogView:onNextClick")
+function DialogView:setOnNextClick(func)
+   self.onNextClick = func
 end
 
-function DialogView:onRestClick()
-    print("DialogView:onNextClick")
+function DialogView:setOnRestClick(func)
+    self.onRestClick = func
 end
 
 return DialogView 

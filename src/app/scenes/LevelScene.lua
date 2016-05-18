@@ -85,8 +85,8 @@ function LevelScene:createLevel()
 					 color = cc.c3b(0,0,0)
 				}))
 			self.m_levelBtn[i+1]:onButtonClicked(function(event)
-				local data = {}
-				data.level = i + 1
+					--dump(LevelData:getMap(data.level))
+					LevelData:setCurLevel(i+1)
 				 	self:toGameScene(data)
 				end)	
 		else
@@ -102,6 +102,7 @@ end
 function LevelScene:toGameScene(data)
 	dump(data)
 	--app:enterScene("GameScene", {data},"fade", 0.6,display.COLOR_WHITE)
-	app:createView("HelpView"):addTo(self)
+	--app:createView("HelpView"):addTo(self)
+	g_Director:runWithScene("GameScene")
 end
 return LevelScene

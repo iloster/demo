@@ -2,7 +2,7 @@
 local MainScene = class("MainScene", function()
     return display.newScene("MainScene")
 end)
-
+local LevelData = require("app.data.LevelData")
 local LevelConfig = {
 	bg  = 1,
 	btn = 2,
@@ -105,6 +105,8 @@ function MainScene:createBottom()
     		--true 表示 关闭声音 
     		--false 表示 打开声音
     			print(state)
+    			-- math.newrandomseed(os.time())
+    			-- print(math.random(1,4))
     		end
     	})
 
@@ -123,6 +125,7 @@ function MainScene:toGameScene()
 	print("进入GameScene------------")
 	--app:enterScene("GameScene")
 	-- app:enterScene("GameScene", nil, "SLIDEINT", 1.0)
+	LevelData:setCurLevel(LevelData:getLevel())
 	g_Director:runWithScene("GameScene")
 end
 

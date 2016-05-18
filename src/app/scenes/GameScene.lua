@@ -1,7 +1,7 @@
 local GameScene = class("GameScene",function()
 	return display.newScene("GameScene")
 end)
-
+local LevelData = require("app.data.LevelData")
 local colors = {
 	[1]   = cc.c3b(0xf6, 0x7c, 0x5f),
     [2]   = cc.c3b(0xf6, 0x5e, 0x3b),
@@ -21,12 +21,12 @@ local CUBE_SPACE_BOTTOM = 150
 local CUBE_SPACE = 10
 local CUBE_SIZE = (display.width - CUBE_SPACE*3 - 2*CUBE_SPACE_LEFT)/4
 local Move_Time = 0.5
-function GameScene:ctor(data)
-	dump(data)
+
+function GameScene:ctor()
 	self:createBg()
-	self:createGame()
 	self:createTouchLayer()
 	self:createBottom()
+	self:init(LevelData:getCurLevel() or LevelData:getLevel())
 end
 
 function GameScene:onEnter()
@@ -36,6 +36,16 @@ end
 function GameScene:onExit()
 
 end
+
+function GameScene:init(level)
+	dump(level)
+	self:setMapByLevel(level)
+	self:createGame()
+end
+
+function GameScene:setMapByLevel(level)
+	self.m_map = LevelData:getMap(level)
+end 
 
 --创建游戏背景
 function GameScene:createBg()
@@ -104,7 +114,7 @@ function GameScene:createGame()
 		self.m_cubeArr[i] = {}
 		for j = 1,4 do			
 			local data = {}
-			data.cubeType = j
+			data.cubeType = self.m_map[j][i]
 			data.size = CUBE_SIZE
 			self.m_cubeArr[i][j]= app:createView("CubeView",data)
 			self.m_cubeArr[i][j]:align(display.LEFT_BOTTOM,(CUBE_SPACE+CUBE_SIZE) * (i-1) + CUBE_SPACE_LEFT,CUBE_SPACE_BOTTOM+(CUBE_SPACE + CUBE_SIZE) * (j-1))
@@ -115,6 +125,15 @@ function GameScene:createGame()
 
 end
 
+function GameScene:removeGame()
+	for i = 1,4 do
+		for j = 1, 4 do
+			if self.m_cubeArr[i][j] then
+				self.m_cubeArr[i][j]:removeSelf()
+			end
+		end
+	end
+end
 --坐标(i,j)
 --cubeType 方块类型
 --size 方块大小
@@ -321,7 +340,6 @@ function GameScene:moveCol(n)
 			transition.execute(self.m_cubeArr[n][j], cc.MoveBy:create(Move_Time,cc.p(0,CUBE_SIZE+CUBE_SPACE)), {
       			delay = 0,
       			onComplete = function()
-          			print("move completed")
           			if j == 4 then
           				self.m_cubeArr[n][4]:removeSelf();    			
           				for k = 3,1,-1 do
@@ -330,7 +348,6 @@ function GameScene:moveCol(n)
           				self.m_cubeArr[n][1] = tmpCube 
           				self.m_isRunning = false  
           				if self:checkGameOver() then
-							print("gameOver")
 							self:showGameOver()
 						else
 							self:nextMove()
@@ -356,7 +373,6 @@ function GameScene:moveCol(n)
 			transition.execute(self.m_cubeArr[n][j], cc.MoveBy:create(Move_Time,cc.p(0,-(CUBE_SIZE+CUBE_SPACE))), {
       			delay = 0,
       			onComplete = function()
-          			print("move completed")
           			if j == 4 then
           				self.m_cubeArr[n][1]:removeSelf();    			
           				for k = 1,3 do
@@ -365,7 +381,6 @@ function GameScene:moveCol(n)
           				self.m_cubeArr[n][4] = tmpCube 
           				self.m_isRunning = false  
           				if self:checkGameOver() then
-							print("gameOver")
 							self:showGameOver()
 						else
 							self:nextMove()
@@ -398,7 +413,6 @@ function GameScene:moveRow(n)
 			transition.execute(self.m_cubeArr[j][n], cc.MoveBy:create(Move_Time,cc.p(CUBE_SIZE+CUBE_SPACE,0)), {
       			delay = 0,
       			onComplete = function()
-          			print("move completed")
           			if j == 4 then
           				self.m_cubeArr[4][n]:removeSelf();    			
           				for k = 3,1,-1 do
@@ -407,7 +421,6 @@ function GameScene:moveRow(n)
           				self.m_cubeArr[1][n] = tmpCube 
           				self.m_isRunning = false  
           				if self:checkGameOver() then
-							print("gameOver")
 							self:showGameOver()
 						else
 							self:nextMove()
@@ -433,7 +446,6 @@ function GameScene:moveRow(n)
 			transition.execute(self.m_cubeArr[j][n], cc.MoveBy:create(Move_Time,cc.p(-(CUBE_SIZE+CUBE_SPACE),0)), {
       			delay = 0,
       			onComplete = function()
-          			print("move completed")
           			if j == 4 then
           				self.m_cubeArr[1][n]:removeSelf();    			
           				for k = 1,3 do
@@ -442,7 +454,6 @@ function GameScene:moveRow(n)
           				self.m_cubeArr[4][n] = tmpCube 
           				self.m_isRunning = false  
           				if self:checkGameOver() then
-							print("gameOver")
 							self:showGameOver()
 						else
 							self:nextMove()
@@ -459,7 +470,6 @@ end
 
 ---判断游戏是否结束
 function GameScene:checkGameOver()
-	print("check gameover")
 	local tag1 = {};
 	local tag2 = {};
 	for i = 1,4 do
@@ -478,7 +488,22 @@ function GameScene:compare4Num(a,b,c,d)
 end
 
 function GameScene:showGameOver()
-	app:createView("DialogView"):addTo(self,LevelConfig["dialog"])
+	local dialog = app:createView("DialogView")
+	dialog:setOnNextClick(function()
+		self:removeGame()
+		if LevelData:getCurLevel() + 1 > LevelData:getLevel() then
+			LevelData:setLevel(LevelData:getCurLevel() + 1)
+		end
+		LevelData:setCurLevel(LevelData:getCurLevel() + 1)
+		self:init(LevelData:getCurLevel())
+		dialog:removeSelf()
+	end)
+	dialog:setOnRestClick(function()
+		self:removeGame()
+		self:init(LevelData:getCurLevel())
+		dialog:removeSelf()
+	end)
+	dialog:addTo(self,LevelConfig["dialog"])
 end
 
 return GameScene
