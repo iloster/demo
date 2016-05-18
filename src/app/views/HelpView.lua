@@ -25,14 +25,15 @@ function HelpView:setContentView()
 	local data  = {}
 	local label = g_UIFactory:createLabel({
 		UILabelType = 2,
-		text = "将无序的方块移动成:",
+		text = "将无序的方块移动成",
 		size = 32,
 		color = cc.c3b(0,0,0)
 	})
 	label:align(display.CENTER,size.width/2,size.height-50)
 	label:addTo(self.m_dialogBg,1)
 
-	
+	display.newSprite("help1.png"):align(display.CENTER, size.width/4, size.height/2):scale(0.3):addTo(self.m_dialogBg)
+	display.newSprite("help2.png"):align(display.CENTER, size.width*3/4, size.height/2):scale(0.3):addTo(self.m_dialogBg)
 end
 
 return HelpView

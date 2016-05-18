@@ -3,6 +3,7 @@ local GameScene = class("GameScene",function()
 end)
 local LevelData = require("app.data.LevelData")
 local AudioConfig = require("app.config.AudioConfig")
+local scheduler = require(cc.PACKAGE_NAME .. ".scheduler")
 local colors = {
 	[1]   = cc.c3b(0xf6, 0x7c, 0x5f),
     [2]   = cc.c3b(0xf6, 0x5e, 0x3b),
@@ -18,7 +19,7 @@ local LevelConfig ={
 	dialog =6,
 }
 local CUBE_SPACE_LEFT = 20
-local CUBE_SPACE = 10
+local CUBE_SPACE = 0
 local CUBE_SIZE = (display.width - CUBE_SPACE*3 - 2*CUBE_SPACE_LEFT)/4
 local CUBE_SPACE_BOTTOM = display.height/5
 
@@ -43,6 +44,8 @@ function GameScene:init(level)
 	dump(level)
 	self:setMapByLevel(level)
 	self:createGame()
+	self:refreshStep(0)
+	self.m_step = 0
 end
 
 function GameScene:setMapByLevel(level)
@@ -52,7 +55,6 @@ end
 --创建游戏背景
 function GameScene:createBg()
 	display.newColorLayer(cc.c4b(0xfa,0xf8,0xef, 255)):addTo(self,LevelConfig["bg"])
-	self.m_step = 0
 	self.m_stepTxt = cc.ui.UILabel.new({
 			  UILabelType = 2,
 			  text = "滑动方块开始游戏",
@@ -135,7 +137,6 @@ function GameScene:createGame()
 		for j = 1,4 do			
 			local data = {}
 			data.cubeType = self.m_map[j][i]
-			--data.size = CUBE_SIZE
 			self.m_cubeArr[i][j]= app:createView("CubeView",data)
 			self.m_cubeArr[i][j]:align(display.LEFT_BOTTOM,(CUBE_SPACE+CUBE_SIZE) * (i-1) + CUBE_SPACE_LEFT,CUBE_SPACE_BOTTOM+(CUBE_SPACE + CUBE_SIZE) * (j-1))
 			self.m_cubeArr[i][j]:size(CUBE_SIZE, CUBE_SIZE)
@@ -511,6 +512,8 @@ function GameScene:compare4Num(a,b,c,d)
 end
 
 function GameScene:showGameOver()
+
+	scheduler.performWithDelayGlobal(function()
 	g_Audio:playEffect(AudioConfig.win)
 	LevelData:setStep(LevelData:getCurLevel(),self.m_step)
 	local dialog = app:createView("DialogView")
@@ -532,6 +535,7 @@ function GameScene:showGameOver()
 		dialog:removeSelf()
 	end)
 	dialog:addTo(self,LevelConfig["dialog"])
+  end,0.5)
 end
 
 return GameScene
