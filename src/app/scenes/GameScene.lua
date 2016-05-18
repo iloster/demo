@@ -17,9 +17,10 @@ local LevelConfig ={
 	dialog =6,
 }
 local CUBE_SPACE_LEFT = 20
-local CUBE_SPACE_BOTTOM = 150
 local CUBE_SPACE = 10
 local CUBE_SIZE = (display.width - CUBE_SPACE*3 - 2*CUBE_SPACE_LEFT)/4
+local CUBE_SPACE_BOTTOM = display.height/5
+
 local Move_Time = 0.5
 
 function GameScene:ctor()
@@ -50,16 +51,15 @@ end
 --创建游戏背景
 function GameScene:createBg()
 	display.newColorLayer(cc.c4b(0xfa,0xf8,0xef, 255)):addTo(self,LevelConfig["bg"])
-
-	self.m_testTxt = cc.ui.UILabel.new({
-		UILabelType = 2,
-		text = "test",
-		size = 32,
-		color = cc.c3b(0,0,0),
-		})
-	--self.m_testTxt:pos(100,100)
-	self.m_testTxt:align(display.CENTER_TOP, display.cx, display.top)
-	self.m_testTxt:addTo(self,LevelConfig["btn"])
+	self.m_step = 0
+	self.m_stepTxt = cc.ui.UILabel.new({
+			  UILabelType = 2,
+			  text = "滑动方块开始游戏",
+			  color = cc.c3b(0,0,0),
+			  size= 32
+			})
+		self.m_stepTxt:align(display.CENTER_TOP, display.cx, display.top-display.height/10)
+		self.m_stepTxt:addTo(self,LevelConfig["btn"])
 	--游戏区域所占的部分
 	local gameSize= 4*CUBE_SIZE+CUBE_SPACE*3
 	--左边
@@ -98,12 +98,10 @@ function GameScene:createBottom()
     	})
 end
 --创建步区域
-function GameScene:creatStep()
-	self.m_stepTxt = cc.ui.UILabel.new({
-		  UILabelType = 2,
-		  text = "滑动方块开始游戏",
-		  color = display.COLOR_BLUE,
-		}) 
+function GameScene:refreshStep(step)
+	if self.m_stepTxt then
+		self.m_stepTxt:setString("步数:"..step)
+	end
 end
 
 
@@ -115,7 +113,7 @@ function GameScene:createGame()
 		for j = 1,4 do			
 			local data = {}
 			data.cubeType = self.m_map[j][i]
-			data.size = CUBE_SIZE
+			--data.size = CUBE_SIZE
 			self.m_cubeArr[i][j]= app:createView("CubeView",data)
 			self.m_cubeArr[i][j]:align(display.LEFT_BOTTOM,(CUBE_SPACE+CUBE_SIZE) * (i-1) + CUBE_SPACE_LEFT,CUBE_SPACE_BOTTOM+(CUBE_SPACE + CUBE_SIZE) * (j-1))
 			self.m_cubeArr[i][j]:size(CUBE_SIZE, CUBE_SIZE)
@@ -320,6 +318,8 @@ function GameScene:nextMove()
 		else
 			self:moveCol(data.offset)
 		end
+		self.m_step = self.m_step + 1
+		self:refreshStep(self.m_step)
 	end
 end
 --列
