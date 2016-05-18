@@ -2,6 +2,7 @@ local GameScene = class("GameScene",function()
 	return display.newScene("GameScene")
 end)
 local LevelData = require("app.data.LevelData")
+local AudioConfig = require("app.config.AudioConfig")
 local colors = {
 	[1]   = cc.c3b(0xf6, 0x7c, 0x5f),
     [2]   = cc.c3b(0xf6, 0x5e, 0x3b),
@@ -83,6 +84,7 @@ function GameScene:createBottom()
     			pressed = "back_press.png"
     		},
     		click = function()
+    			g_Audio:playEffect(AudioConfig.btnClick)
     			g_Director:popScene()
     		end
     	})
@@ -93,14 +95,34 @@ function GameScene:createBottom()
     			pressed = "help_press.png"
     		},
     		click = function()
+    			g_Audio:playEffect(AudioConfig.btnClick)
     			app:createView("HelpView"):addTo(self,LevelConfig["dialog"])
     		end
     	})
+
+    local resetBtnImage = {
+        normal = "refresh_normal.png",
+        pressed = "refresh_press.png"
+    }
+    self.m_resetBtn = cc.ui.UIPushButton.new(resetBtnImage)
+    self.m_resetBtn:align(display.CENTER_BOTTOM, display.cx, display.bottom+50)
+    self.m_resetBtn:addTo(self,LevelConfig["btn"])
+    self.m_resetBtn:setScale(0.8)
+    self.m_resetBtn:onButtonClicked(function()
+            g_Audio:playEffect(AudioConfig.btnClick)
+			self:removeGame()
+			self:init(LevelData:getCurLevel())
+			self:refreshStep(0)
+        end)
 end
 --创建步区域
 function GameScene:refreshStep(step)
 	if self.m_stepTxt then
-		self.m_stepTxt:setString("步数:"..step)
+		if step ==0 then
+			self.m_stepTxt:setString("滑动方块开始游戏")
+		else
+			self.m_stepTxt:setString("步数:"..step)
+		end
 	end
 end
 
@@ -313,6 +335,7 @@ end
 function GameScene:nextMove()
 	local data = table.remove(self.m_moveList,1)
 	if data then
+		g_Audio:playEffect(AudioConfig.move)
 		if data.direction == 0 then
 			self:moveRow(data.offset)
 		else
@@ -488,8 +511,12 @@ function GameScene:compare4Num(a,b,c,d)
 end
 
 function GameScene:showGameOver()
+	g_Audio:playEffect(AudioConfig.win)
+	LevelData:setStep(LevelData:getCurLevel(),self.m_step)
 	local dialog = app:createView("DialogView")
+	dialog:setTitle("恭喜你！"..self.m_step.."步通过第"..LevelData:getCurLevel().."关")
 	dialog:setOnNextClick(function()
+		g_Audio:playEffect(AudioConfig.btnClick)
 		self:removeGame()
 		if LevelData:getCurLevel() + 1 > LevelData:getLevel() then
 			LevelData:setLevel(LevelData:getCurLevel() + 1)
@@ -499,6 +526,7 @@ function GameScene:showGameOver()
 		dialog:removeSelf()
 	end)
 	dialog:setOnRestClick(function()
+		g_Audio:playEffect(AudioConfig.btnClick)
 		self:removeGame()
 		self:init(LevelData:getCurLevel())
 		dialog:removeSelf()

@@ -2,7 +2,7 @@ local LevelScene = class("LevelScene",function()
 		return display.newScene("LevelScene")
 end)
 local LevelData = require("app.data.LevelData")
-
+local AudioConfig = require("app.config.AudioConfig")
 function LevelScene:ctor()
 	-- body
 	
@@ -42,6 +42,7 @@ function LevelScene:createBottom()
     			pressed = "back_press.png"
     		},
     		click = function()
+    			g_Audio:playEffect(AudioConfig.btnClick)
     			g_Director:popScene()
     		end
     	})
@@ -52,6 +53,7 @@ function LevelScene:createBottom()
     			pressed = "help_press.png"
     		},
     		click = function()
+    			g_Audio:playEffect(AudioConfig.btnClick)
     			app:createView("HelpView"):addTo(self)
     		end
     	})
@@ -65,18 +67,24 @@ function LevelScene:createLevel()
 	}
    local Space = (display.width - 400)/5
    self.m_levelBtn = {}
+   self.m_levelLabel={}
    local level = LevelData.getLevel()
 
    for i = 0,7 do
    		local row = i%4 + 1
    		local col = math.floor(i/4) + 1
    		local x = row * Space + (2*row - 1) * 50
-   		local y = display.cy - (col-1) * Space*2
+   		local y = display.cy - (col-1) * Space
    		if col == 1 then
-   			y = display.cy - (-1) * Space
+   			y = display.cy - (-3) * Space
    		end
    		--local buttonStatus = ""
 		self.m_levelBtn[i+1] = cc.ui.UIPushButton.new(levelImages)
+		self.m_levelLabel[i+1] = cc.ui.UILabel.new({
+				UILabelType = 2,
+				text = "",
+				size = 28,
+				color = cc.c3b(0,0, 0) })
 		if i<level then
 			self.m_levelBtn[i+1]:setButtonLabel("normal", cc.ui.UILabel.new({
 					 UILabelType = 2,
@@ -87,14 +95,25 @@ function LevelScene:createLevel()
 			self.m_levelBtn[i+1]:onButtonClicked(function(event)
 					--dump(LevelData:getMap(data.level))
 					LevelData:setCurLevel(i+1)
+					g_Audio:playEffect(AudioConfig.btnClick)
 				 	self:toGameScene(data)
-				end)	
+				end)
+			local step = LevelData:getStep(i+1)
+			if step == 0 then
+		    	self.m_levelLabel[i+1]:setString("未完成")
+		    else
+		    	self.m_levelLabel[i+1]:setString(step.."步")
+		    end			
 		else
 			self.m_levelBtn[i+1]:setButtonEnabled(false)
+			self.m_levelLabel[i+1]:setString("未解锁")
 		end
-		self.m_levelBtn[i+1]:align(display.CENTER, x, y)
-		
+		self.m_levelBtn[i+1]:align(display.CENTER, x, y)		
 		self.m_levelBtn[i+1]:addTo(self)
+
+		self.m_levelLabel[i+1]:align(display.CENTER_TOP, x, y-Space*1.5)
+		self.m_levelLabel[i+1]:addTo(self)
+
 	end
 end
 

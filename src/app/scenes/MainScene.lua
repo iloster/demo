@@ -3,6 +3,7 @@ local MainScene = class("MainScene", function()
     return display.newScene("MainScene")
 end)
 local LevelData = require("app.data.LevelData")
+local AudioConfig = require("app.config.AudioConfig")
 local LevelConfig = {
 	bg  = 1,
 	btn = 2,
@@ -72,6 +73,7 @@ function MainScene:createBtn()
 		}))
 		:align(display.CENTER, display.cx, display.cy+120)
 		:onButtonClicked(function(event)
+				g_Audio:playEffect(AudioConfig.btnClick)
 				self:toGameScene()
 			end)	
 		:addTo(self,LevelConfig["btn"])
@@ -86,6 +88,7 @@ function MainScene:createBtn()
 		}))
 		:align(display.CENTER, display.cx, display.cy-80)
 		:onButtonClicked(function(event)
+				g_Audio:playEffect(AudioConfig.btnClick)
 				self:toLevelScene()
 			end)	
 		:addTo(self,LevelConfig["btn"])
@@ -96,19 +99,19 @@ function MainScene:createBottom()
 	self.m_bottomNode:pos(0,0)
     self.m_bottomNode:addTo(self,LevelConfig["btn"])
     
-    self.m_bottomNode:setLeftCheckBox({
-    		images = {
-    			off = "voice_open.png",
-    			on = "voice_close.png"
-    		},
-    		click = function(state)
-    		--true 表示 关闭声音 
-    		--false 表示 打开声音
-    			print(state)
-    			-- math.newrandomseed(os.time())
-    			-- print(math.random(1,4))
-    		end
-    	})
+    -- self.m_bottomNode:setLeftCheckBox({
+    -- 		images = {
+    -- 			off = "voice_open.png",
+    -- 			on = "voice_close.png"
+    -- 		},
+    -- 		click = function(state)
+    -- 		--true 表示 关闭声音 
+    -- 		--false 表示 打开声音
+    -- 			print(state)
+    -- 			-- math.newrandomseed(os.time())
+    -- 			-- print(math.random(1,4))
+    -- 		end
+    -- 	})
 
     self.m_bottomNode:setRightButton({
     	images = {
@@ -116,6 +119,7 @@ function MainScene:createBottom()
     			pressed = "help_press.png"
     		},
     		click = function()
+    			g_Audio:playEffect(AudioConfig.btnClick)
     			app:createView("HelpView"):addTo(self,LevelConfig["dialog"])
     		end
     	})

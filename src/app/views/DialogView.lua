@@ -17,7 +17,7 @@ function DialogView:ctor()
     self.m_content= cc.ui.UILabel.new({
         UILabelType = 2,
         text = "太棒了!成功通过一关",
-        size = 25,
+        size = 32,
         color = cc.c3b(0,0,0),
         })
     self.m_content:align(display.CENTER,size.width/2,size.height-100)
@@ -73,6 +73,9 @@ end
 
 function DialogView:setOnRestClick(func)
     self.onRestClick = func
+end
+function DialogView:setTitle(title)
+    self.m_content:setString(title)
 end
 
 return DialogView 

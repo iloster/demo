@@ -15,6 +15,16 @@ function LevelData:setLevel(level)
 	NativeData:saveValeForKey("level",level,"int")
 end
 
+function LevelData:setStep(level,step)
+	if self:getStep(level) == 0 or step<self:getStep(level) then
+		NativeData:saveValeForKey("level_step_"..level,step,"int")
+	end  
+end
+
+function LevelData:getStep(level)
+	return NativeData:getValeForKey("level_step_"..level,"int",0)
+end
+
 function LevelData:setCurLevel(level)
 	self.m_curLevel = level
 end
