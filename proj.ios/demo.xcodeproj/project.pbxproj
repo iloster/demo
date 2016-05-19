@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04F20A111CEDB669007EB5E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F20A101CEDB669007EB5E5 /* Images.xcassets */; };
 		2EDD2787191B62CA004F9539 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDD2780191B62CA004F9539 /* Default-568h@2x.png */; };
 		2EDD2788191B62CA004F9539 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDD2781191B62CA004F9539 /* Default.png */; };
 		2EDD2789191B62CA004F9539 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDD2782191B62CA004F9539 /* Default@2x.png */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04F20A101CEDB669007EB5E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = demo/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		2EDD2780191B62CA004F9539 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2EDD2781191B62CA004F9539 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2EDD2782191B62CA004F9539 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		2EDD277F191B62CA004F9539 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				04F20A101CEDB669007EB5E5 /* Images.xcassets */,
 				DA0D6ECE19A1DA3600EAAB9E /* src */,
 				2EDD278E191B62D6004F9539 /* res */,
 				2EDD279C191B641B004F9539 /* ios */,
@@ -297,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F20A111CEDB669007EB5E5 /* Images.xcassets in Resources */,
 				2EDD2789191B62CA004F9539 /* Default@2x.png in Resources */,
 				2EDD278C191B62CA004F9539 /* Icon@2x.png in Resources */,
 				2EDD278A191B62CA004F9539 /* Icon-72.png in Resources */,
@@ -453,9 +457,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = armv7;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: developer_loster@sina.com (WV57L2HGY7)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
@@ -522,9 +528,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = armv7;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: developer_loster@sina.com (WV57L2HGY7)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
