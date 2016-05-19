@@ -29,7 +29,7 @@
 #import "CCEAGLView.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
-
+#import "UMMobClick/MobClick.h"
 @implementation AppController
 
 #pragma mark -
@@ -72,6 +72,13 @@ static AppDelegate s_sharedApplication;
     cocos2d::Director::getInstance()->setOpenGLView(glview);
     
     cocos2d::Application::getInstance()->run();
+    
+     [MobClick setLogEnabled:YES];
+    [MobClick setAppVersion:XcodeAppVersion];
+    UMConfigInstance.appKey = @"573daf8867e58e5f4a00307b";
+    //UMConfigInstance.ChannelId = @"App Store";
+    UMConfigInstance.eSType = E_UM_GAME; // 仅适用于游戏场景
+    [MobClick startWithConfigure:UMConfigInstance];
     
     return YES;
 }

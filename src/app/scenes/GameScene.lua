@@ -516,6 +516,13 @@ function GameScene:showGameOver()
 	scheduler.performWithDelayGlobal(function()
 	g_Audio:playEffect(AudioConfig.win)
 	LevelData:setStep(LevelData:getCurLevel(),self.m_step)
+
+	local data = {}
+	data.eventId = "level"
+	data.level = LevelData:getCurLevel()
+	data.counter = self.m_step
+	luaoc.callStaticMethod("Report", "event",data)
+
 	local dialog = app:createView("DialogView")
 	dialog:setTitle("恭喜你！"..self.m_step.."步通过第"..LevelData:getCurLevel().."关")
 	dialog:setOnNextClick(function()

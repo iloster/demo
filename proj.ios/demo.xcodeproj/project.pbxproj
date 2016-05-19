@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		04F20A111CEDB669007EB5E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F20A101CEDB669007EB5E5 /* Images.xcassets */; };
+		14255AB61CEDEE4C00261CC7 /* Report.m in Sources */ = {isa = PBXBuildFile; fileRef = 14255AB51CEDEE4C00261CC7 /* Report.m */; };
+		14255ABB1CEE059900261CC7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14255ABA1CEE059900261CC7 /* libz.tbd */; };
+		14255ABD1CEE05A900261CC7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14255ABC1CEE05A900261CC7 /* libsqlite3.tbd */; };
+		14255AD61CEE158600261CC7 /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14255AD51CEE158600261CC7 /* UMMobClick.framework */; };
 		2EDD2787191B62CA004F9539 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDD2780191B62CA004F9539 /* Default-568h@2x.png */; };
 		2EDD2788191B62CA004F9539 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDD2781191B62CA004F9539 /* Default.png */; };
 		2EDD2789191B62CA004F9539 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDD2782191B62CA004F9539 /* Default@2x.png */; };
@@ -58,6 +62,11 @@
 
 /* Begin PBXFileReference section */
 		04F20A101CEDB669007EB5E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = demo/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		14255AB51CEDEE4C00261CC7 /* Report.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Report.m; sourceTree = "<group>"; };
+		14255AB71CEDEE7200261CC7 /* Report.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Report.h; sourceTree = "<group>"; };
+		14255ABA1CEE059900261CC7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		14255ABC1CEE05A900261CC7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		14255AD51CEE158600261CC7 /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMMobClick.framework; path = "../../../../Downloads/umsdk_IOS_analyics_no-idfa_v4.0.3/UMMobClick.framework"; sourceTree = "<group>"; };
 		2EDD2780191B62CA004F9539 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2EDD2781191B62CA004F9539 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2EDD2782191B62CA004F9539 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -102,12 +111,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14255AD61CEE158600261CC7 /* UMMobClick.framework in Frameworks */,
+				14255ABD1CEE05A900261CC7 /* libsqlite3.tbd in Frameworks */,
+				14255ABB1CEE059900261CC7 /* libz.tbd in Frameworks */,
+				F4949C7B1699554600DB561E /* CoreTelephony.framework in Frameworks */,
 				DAF28FC1196D31EB00959DA1 /* liblibquick.a in Frameworks */,
 				9FC0E165195418CB0064626D /* CoreMotion.framework in Frameworks */,
 				F452BFD01687F0F200DC5BCC /* UIKit.framework in Frameworks */,
 				F456F0FD15EE0CF600FCF3E2 /* SystemConfiguration.framework in Frameworks */,
 				F456ECC615EE018E00FCF3E2 /* QuartzCore.framework in Frameworks */,
-				F4949C7B1699554600DB561E /* CoreTelephony.framework in Frameworks */,
 				F456ECD415EE018E00FCF3E2 /* CoreGraphics.framework in Frameworks */,
 				F4949C791699553B00DB561E /* AddressBook.framework in Frameworks */,
 				F456ECC815EE018E00FCF3E2 /* OpenGLES.framework in Frameworks */,
@@ -145,6 +157,8 @@
 				2EDD2796191B639C004F9539 /* Prefix.pch */,
 				2EDD2797191B639C004F9539 /* RootViewController.h */,
 				2EDD2798191B639C004F9539 /* RootViewController.mm */,
+				14255AB51CEDEE4C00261CC7 /* Report.m */,
+				14255AB71CEDEE7200261CC7 /* Report.h */,
 			);
 			name = ios;
 			sourceTree = "<group>";
@@ -204,6 +218,9 @@
 		F456ECC415EE018E00FCF3E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14255AD51CEE158600261CC7 /* UMMobClick.framework */,
+				14255ABC1CEE05A900261CC7 /* libsqlite3.tbd */,
+				14255ABA1CEE059900261CC7 /* libz.tbd */,
 				9FC0E164195418CB0064626D /* CoreMotion.framework */,
 				F4949C781699553B00DB561E /* AddressBook.framework */,
 				F456ECCB15EE018E00FCF3E2 /* AudioToolbox.framework */,
@@ -338,6 +355,7 @@
 				DA0D6EC919A1D88A00EAAB9E /* AppDelegate.cpp in Sources */,
 				2EDD279B191B639C004F9539 /* RootViewController.mm in Sources */,
 				2EDD279A191B639C004F9539 /* main.m in Sources */,
+				14255AB61CEDEE4C00261CC7 /* Report.m in Sources */,
 				2EDD2799191B639C004F9539 /* AppController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,11 +479,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer: developer_loster@sina.com (WV57L2HGY7)";
+				CLANG_ENABLE_MODULE_DEBUGGING = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = "/Users/cheng/Downloads/umsdk_IOS_analyics_no-idfa_v4.0.3";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -532,11 +551,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "iPhone Developer: developer_loster@sina.com (WV57L2HGY7)";
+				CLANG_ENABLE_MODULE_DEBUGGING = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = "/Users/cheng/Downloads/umsdk_IOS_analyics_no-idfa_v4.0.3";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

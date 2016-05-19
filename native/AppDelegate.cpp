@@ -5,6 +5,7 @@
 #if (COCOS2D_DEBUG>0)
 #include "codeIDE/runtime/Runtime.h"
 #include "codeIDE/ConfigParser.h"
+
 #endif
 
 using namespace CocosDenshion;
@@ -120,7 +121,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCLOG("LOAD LUA FILE: %s", path.c_str());
     CCLOG("------------------------------------------------");
     pEngine->executeScriptFile(path.c_str());
-
+    
     return true;
 }
 
