@@ -44,18 +44,18 @@ function MainScene:createBtn()
 		text = "Cube",
 		size = 32,
 		color = cc.c3b(0,0, 0) })
-	:align(display.CENTER_TOP, display.left+display.width/2, display.top - 170)
+	:align(display.CENTER_TOP, display.left+display.width/2, display.top*7/8)
 	:addTo(self,LevelConfig["btn"])
 
 	--创建游戏版本号label
-	cc.ui.UILabel.new({
-		UILabelType = 2,
-		text = "Version 1.0.0",
-		size = 28,
-		color = cc.c3b(0,0,0)
-		})
-	:align(display.CENTER_BOTTOM, display.cx, display.bottom)
-	:addTo(self,LevelConfig["btn"])
+	-- cc.ui.UILabel.new({
+	-- 	UILabelType = 2,
+	-- 	text = "Version 1.0.0",
+	-- 	size = 28,
+	-- 	color = cc.c3b(0,0,0)
+	-- 	})
+	-- :align(display.CENTER_BOTTOM, display.cx, display.bottom)
+	-- :addTo(self,LevelConfig["btn"])
 
 	local btnImages = {
 		normal = "btn.png",
@@ -74,6 +74,11 @@ function MainScene:createBtn()
 		:align(display.CENTER, display.cx, display.cy+120)
 		:onButtonClicked(function(event)
 				g_Audio:playEffect(AudioConfig.btnClick)
+				if device.platform  == "mac" then
+					local data = {}
+					data.eventId = "Btn_QuickGame"
+					luaoc.callStaticMethod("Report", "eventId",data)
+				end
 				self:toGameScene()
 			end)	
 		:addTo(self,LevelConfig["btn"])
@@ -89,6 +94,9 @@ function MainScene:createBtn()
 		:align(display.CENTER, display.cx, display.cy-80)
 		:onButtonClicked(function(event)
 				g_Audio:playEffect(AudioConfig.btnClick)
+				local data = {}
+				data.eventId = "Btn_ChooseLevel"
+				luaoc.callStaticMethod("Report", "eventId",data)
 				self:toLevelScene()
 			end)	
 		:addTo(self,LevelConfig["btn"])

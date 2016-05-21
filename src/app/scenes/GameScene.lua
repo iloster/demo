@@ -61,8 +61,13 @@ function GameScene:createBg()
 			  color = cc.c3b(0,0,0),
 			  size= 32
 			})
+	print("sssss"..device.model)
+	if device.model == "ipad" then
+		self.m_stepTxt:align(display.CENTER_TOP, display.cx, display.top-20)
+	else
 		self.m_stepTxt:align(display.CENTER_TOP, display.cx, display.top-display.height/10)
-		self.m_stepTxt:addTo(self,LevelConfig["btn"])
+	end
+	self.m_stepTxt:addTo(self,LevelConfig["btn"])
 	--游戏区域所占的部分
 	local gameSize= 4*CUBE_SIZE+CUBE_SPACE*3
 	--左边
@@ -518,10 +523,10 @@ function GameScene:showGameOver()
 	LevelData:setStep(LevelData:getCurLevel(),self.m_step)
 
 	local data = {}
-	data.eventId = "level"
-	data.level = LevelData:getCurLevel()
+	data.eventId = "Level_"..LevelData:getCurLevel()
+	--data.level = LevelData:getCurLevel()
 	data.counter = self.m_step
-	luaoc.callStaticMethod("Report", "event",data)
+	luaoc.callStaticMethod("Report", "eventLevel",data)
 
 	local dialog = app:createView("DialogView")
 	dialog:setTitle("恭喜你！"..self.m_step.."步通过第"..LevelData:getCurLevel().."关")

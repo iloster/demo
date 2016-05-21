@@ -11,14 +11,17 @@
 #import "UMMobClick/MobClick.h"
 @implementation Report
 
-+(void)event:(NSDictionary *) dic{
++(void)eventLevel:(NSDictionary *) dic{
     NSLog(@"ssss");
     NSString *eventId = [dic objectForKey:@"eventId"];
-    NSString *level = [dic objectForKey:@"level"];
     NSString *num = [dic objectForKey:@"counter"];
-    NSLog(@"eventId=%@,level=%@,num=%@",eventId,level,num);
-    [MobClick event:@"level" attributes:@{@"level":[NSString stringWithFormat:@"%@",level],@"step":[NSString stringWithFormat:@"%@",num]}];
+    NSLog(@"eventId=%@,num=%@",eventId,num);
+    [MobClick event:eventId attributes:@{@"step":[NSString stringWithFormat:@"%@",num]}];
     
+}
++(void)eventId:(NSDictionary *) dic{
+    NSString *eventId = [dic objectForKey:@"eventId"];
+    [MobClick event:eventId];
 }
 
 @end

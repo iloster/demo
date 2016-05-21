@@ -12,7 +12,7 @@
     
 }
 
-+(void)event:(NSDictionary *)attributes;
-
++(void)eventLevel:(NSDictionary *)attributes;
++(void)eventId:(NSDictionary *)attributes;
 @end
 

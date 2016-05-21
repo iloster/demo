@@ -12,6 +12,9 @@ function HelpView:ctor()
         self:removeSelf()
         return true;
     end)
+    local data = {}
+	data.eventId = "Btn_Help"
+	luaoc.callStaticMethod("Report", "eventId",data)
 end
 
 function HelpView:setContentBg()
