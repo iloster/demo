@@ -2,8 +2,9 @@ local DialogView = class("DialogView", function()
     return display.newColorLayer(cc.c4b(0,0,0,125))
     end)
 
-function DialogView:ctor()
+function DialogView:ctor(data)
 	--
+    dump(data)
     self:enableTouch(true)
     self:setTouchSwallowEnabled(true)
     self:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
@@ -22,11 +23,22 @@ function DialogView:ctor()
         })
     self.m_content:align(display.CENTER,size.width/2,size.height-100)
     self.m_content:addTo(self.m_dialogBg)
-
-    local nextBtnImages = {
-    	normal = "next_normal.png",
-    	pressed = "next_press.png"
-	}
+    
+    local nextBtnImages = {} 
+    local nextTxt = "下一关"
+    if data.level ~= 8 then
+         nextBtnImages = {
+        	normal = "next_normal.png",
+        	pressed = "next_press.png"
+    	}
+        nextTxt = "下一关"
+    else
+         nextBtnImages = {
+            normal = "home_normal.png",
+            pressed = "home_press.png"
+        }
+        nextTxt = "返回大厅"
+    end
     self.m_nextBtn = cc.ui.UIPushButton.new(nextBtnImages)
     self.m_nextBtn:align(display.CENTER, size.width*3/4, size.height/2)
     self.m_nextBtn:addTo(self.m_dialogBg)
@@ -35,9 +47,10 @@ function DialogView:ctor()
             self.onNextClick()
         end)
 
+
     self.m_nextTxt = cc.ui.UILabel.new({
         UILabelType = 2,
-        text = "下一关",
+        text = nextTxt,
         size = 25,
         color = cc.c3b(0,0,0),
         })

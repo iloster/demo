@@ -22,6 +22,10 @@ function Director:popScene()
 
 end
 
+function Director:replaceScene(scene)
+	self.m_scenes = {}
+	app:enterScene(scene)
+end
 function Director:dtor()
 
 end

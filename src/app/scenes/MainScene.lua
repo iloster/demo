@@ -41,7 +41,7 @@ function MainScene:createBtn()
 	--创建游戏名label
 	cc.ui.UILabel.new({
 		UILabelType = 2,
-		text = "Cube",
+		text = "平面魔方",
 		size = 32,
 		color = cc.c3b(0,0, 0) })
 	:align(display.CENTER_TOP, display.left+display.width/2, display.top*7/8)

@@ -524,14 +524,17 @@ function GameScene:showGameOver()
 
 	local data = {}
 	data.eventId = "Level_"..LevelData:getCurLevel()
-	--data.level = LevelData:getCurLevel()
 	data.counter = self.m_step
 	luaoc.callStaticMethod("Report", "eventLevel",data)
 
-	local dialog = app:createView("DialogView")
+	local dialog = app:createView("DialogView",{level = LevelData:getCurLevel()})
 	dialog:setTitle("恭喜你！"..self.m_step.."步通过第"..LevelData:getCurLevel().."关")
 	dialog:setOnNextClick(function()
 		g_Audio:playEffect(AudioConfig.btnClick)
+		if LevelData:getCurLevel() == 8 then
+			g_Director:replaceScene("MainScene")
+			return;
+		end
 		self:removeGame()
 		if LevelData:getCurLevel() + 1 > LevelData:getLevel() then
 			LevelData:setLevel(LevelData:getCurLevel() + 1)
