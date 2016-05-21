@@ -74,11 +74,9 @@ function MainScene:createBtn()
 		:align(display.CENTER, display.cx, display.cy+120)
 		:onButtonClicked(function(event)
 				g_Audio:playEffect(AudioConfig.btnClick)
-				if device.platform  == "mac" then
-					local data = {}
-					data.eventId = "Btn_QuickGame"
-					luaoc.callStaticMethod("Report", "eventId",data)
-				end
+				local data = {}
+				data.eventId = "Btn_QuickGame"
+				luaoc.callStaticMethod("Report", "eventId",data)
 				self:toGameScene()
 			end)	
 		:addTo(self,LevelConfig["btn"])
