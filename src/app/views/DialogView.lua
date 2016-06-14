@@ -5,7 +5,7 @@ local DialogView = class("DialogView", function()
 function DialogView:ctor(data)
 	--
     dump(data)
-    self:enableTouch(true)
+    self:setTouchEnabled(true)
     self:setTouchSwallowEnabled(true)
     self:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
         return true;
@@ -17,7 +17,7 @@ function DialogView:ctor(data)
 
     self.m_content= cc.ui.UILabel.new({
         UILabelType = 2,
-        text = "太棒了!成功通过一关",
+        text = g_Lan:get("DialogView_Win"),
         size = 32,
         color = cc.c3b(0,0,0),
         })
@@ -25,19 +25,19 @@ function DialogView:ctor(data)
     self.m_content:addTo(self.m_dialogBg)
     
     local nextBtnImages = {} 
-    local nextTxt = "下一关"
+    local nextTxt = g_Lan:get("DialogView_Next")
     if data.level ~= 8 then
          nextBtnImages = {
         	normal = "next_normal.png",
         	pressed = "next_press.png"
     	}
-        nextTxt = "下一关"
+        nextTxt = g_Lan:get("DialogView_Next")
     else
          nextBtnImages = {
             normal = "home_normal.png",
             pressed = "home_press.png"
         }
-        nextTxt = "返回大厅"
+        nextTxt = g_Lan:get("DialogView_BackToMain")
     end
     self.m_nextBtn = cc.ui.UIPushButton.new(nextBtnImages)
     self.m_nextBtn:align(display.CENTER, size.width*3/4, size.height/2)
@@ -72,7 +72,7 @@ function DialogView:ctor(data)
 
      self.m_resetTxt = cc.ui.UILabel.new({
         UILabelType = 2,
-        text = "再来一次",
+        text = g_Lan:get("DialogView_Again"),
         size = 25,
         color = cc.c3b(0,0,0),
         })

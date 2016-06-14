@@ -1,0 +1,8 @@
+kPlatformIOS = "ios"
+kPlatformAndroid = "android"
+kPlatformMac = "mac"
+kPlatformWindow = "window"
+kModelIpad = "ipad"
+kModelIphone = "iphone"
+kLanEN = "en"
+kLanCN = "cn"

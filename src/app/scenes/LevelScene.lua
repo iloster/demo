@@ -24,7 +24,7 @@ function LevelScene:createBg()
 
 	cc.ui.UILabel.new({
 		UILabelType = 2,
-		text = "选择游戏关卡",
+		text = g_Lan:get("LevelScene_ChooseLevel"),
 		size = 32,
 		color = cc.c3b(0,0, 0) })
 	:align(display.CENTER_TOP, display.left+display.width/2, display.top - 170)
@@ -100,13 +100,13 @@ function LevelScene:createLevel()
 				end)
 			local step = LevelData:getStep(i+1)
 			if step == 0 then
-		    	self.m_levelLabel[i+1]:setString("未完成")
+		    	self.m_levelLabel[i+1]:setString(g_Lan:get("LevelScene_Unfinish"))
 		    else
-		    	self.m_levelLabel[i+1]:setString(step.."步")
+		    	self.m_levelLabel[i+1]:setString(step..g_Lan:get("LevelScene_Step"))
 		    end			
 		else
 			self.m_levelBtn[i+1]:setButtonEnabled(false)
-			self.m_levelLabel[i+1]:setString("未解锁")
+			self.m_levelLabel[i+1]:setString(g_Lan:get("LevelScene_Lock"))
 		end
 		self.m_levelBtn[i+1]:align(display.CENTER, x, y)		
 		self.m_levelBtn[i+1]:addTo(self)

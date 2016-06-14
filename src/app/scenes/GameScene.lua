@@ -57,7 +57,7 @@ function GameScene:createBg()
 	display.newColorLayer(cc.c4b(0xfa,0xf8,0xef, 255)):addTo(self,LevelConfig["bg"])
 	self.m_stepTxt = cc.ui.UILabel.new({
 			  UILabelType = 2,
-			  text = "滑动方块开始游戏",
+			  text = g_Lan:get("GameScene_StartGame"),
 			  color = cc.c3b(0,0,0),
 			  size= 32
 			})
@@ -126,9 +126,9 @@ end
 function GameScene:refreshStep(step)
 	if self.m_stepTxt then
 		if step ==0 then
-			self.m_stepTxt:setString("滑动方块开始游戏")
+			self.m_stepTxt:setString(g_Lan:get("GameScene_StartGame"))
 		else
-			self.m_stepTxt:setString("步数:"..step)
+			self.m_stepTxt:setString(g_Lan:get("GameScene_StepNum")..step)
 		end
 	end
 end
@@ -525,10 +525,12 @@ function GameScene:showGameOver()
 	local data = {}
 	data.eventId = "Level_"..LevelData:getCurLevel()
 	data.counter = self.m_step
-	luaoc.callStaticMethod("Report", "eventLevel",data)
+	g_Native:report(data)
 
 	local dialog = app:createView("DialogView",{level = LevelData:getCurLevel()})
-	dialog:setTitle("恭喜你！"..self.m_step.."步通过第"..LevelData:getCurLevel().."关")
+	--dialog:setTitle("恭喜你！"..self.m_step.."步通过第"..LevelData:getCurLevel().."关")
+	local titleStr = string.format(g_Lan:get("GameScene_Win"),self.m_step,LevelData:getCurLevel())
+	dialog:setTitle(titleStr)
 	dialog:setOnNextClick(function()
 		g_Audio:playEffect(AudioConfig.btnClick)
 		if LevelData:getCurLevel() == 8 then

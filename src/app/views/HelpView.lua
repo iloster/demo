@@ -6,7 +6,7 @@ function HelpView:ctor()
 	-- body
 	self:setContentBg()
 	self:setContentView()
-	self:enableTouch(true)
+	self:setTouchEnabled(true)
     self:setTouchSwallowEnabled(true)
     self:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
         self:removeSelf()
@@ -14,7 +14,7 @@ function HelpView:ctor()
     end)
     local data = {}
 	data.eventId = "Btn_Help"
-	luaoc.callStaticMethod("Report", "eventId",data)
+	g_Native:report(data)
 end
 
 function HelpView:setContentBg()
@@ -28,7 +28,7 @@ function HelpView:setContentView()
 	local data  = {}
 	local label = g_UIFactory:createLabel({
 		UILabelType = 2,
-		text = "将无序的方块移动成",
+		text = g_Lan:get("HelpView_Info"),
 		size = 32,
 		color = cc.c3b(0,0,0)
 	})

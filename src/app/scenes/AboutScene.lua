@@ -1,7 +1,7 @@
 local AboutScene = class("AboutScene",function()
 	return display.newScene("AboutScene")
 end)
-local wangfa = "向上，向下，向左，向右滑动方块，如果四条横线或者四条竖线上的方块为同一种颜色，表示过关成功。如图所示："
+local wangfa = g_Lan:get("AboutScene_GameInfo")
 function AboutScene:ctor()
 	self:createBg()
 end
@@ -18,7 +18,7 @@ function AboutScene:createBg()
 	display.newColorLayer(cc.c4b(0xfa,0xf8,0xef, 255)):addTo(self)
 	cc.ui.UILabel.new({
 		UILabelType = 2,
-		text = "游戏玩法",
+		text = g_Lan:get("AboutScene_Title"),
 		size = 32,
 		color = cc.c3b(0,0, 0) })
 	:align(display.CENTER, display.cx, display.cy+400)

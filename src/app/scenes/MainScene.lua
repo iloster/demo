@@ -41,7 +41,7 @@ function MainScene:createBtn()
 	--创建游戏名label
 	cc.ui.UILabel.new({
 		UILabelType = 2,
-		text = "平面魔方",
+		text = g_Lan:get("MainScene_Title"),
 		size = 32,
 		color = cc.c3b(0,0, 0) })
 	:align(display.CENTER_TOP, display.left+display.width/2, display.top*7/8)
@@ -67,7 +67,7 @@ function MainScene:createBtn()
 		--:setButtonSize(250,90)
 		:setButtonLabel("normal", cc.ui.UILabel.new({
 			 UILabelType = 2,
-			 text = "立即游戏",
+			 text = g_Lan:get("MainScene_QuickGame"),
 			 size = 32,
 			 color=cc.c3b(0,0,0)
 		}))
@@ -76,7 +76,7 @@ function MainScene:createBtn()
 				g_Audio:playEffect(AudioConfig.btnClick)
 				local data = {}
 				data.eventId = "Btn_QuickGame"
-				luaoc.callStaticMethod("Report", "eventId",data)
+				g_Native:report(data)
 				self:toGameScene()
 			end)	
 		:addTo(self,LevelConfig["btn"])
@@ -85,7 +85,7 @@ function MainScene:createBtn()
 		--:setButtonSize(250,90)
 		:setButtonLabel("normal", cc.ui.UILabel.new({
 			 UILabelType = 2,
-			 text = "选择关卡",
+			 text = g_Lan:get("MainScene_ChooseLevel"),
 			 size = 32,
 			 color=cc.c3b(0,0,0)
 		}))
@@ -94,7 +94,7 @@ function MainScene:createBtn()
 				g_Audio:playEffect(AudioConfig.btnClick)
 				local data = {}
 				data.eventId = "Btn_ChooseLevel"
-				luaoc.callStaticMethod("Report", "eventId",data)
+				g_Native:report(data)
 				self:toLevelScene()
 			end)	
 		:addTo(self,LevelConfig["btn"])
