@@ -14,6 +14,11 @@
 		145593DB1CFDE72D0049C698 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 145593DA1CFDE72D0049C698 /* CoreTelephony.framework */; };
 		145593DD1CFDE73F0049C698 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 145593DC1CFDE73F0049C698 /* libz.tbd */; };
 		145593DF1CFDE74E0049C698 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 145593DE1CFDE74E0049C698 /* libsqlite3.tbd */; };
+		148332D91D15114B0005D550 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 148332D51D15114B0005D550 /* libWeChatSDK.a */; };
+		148332DB1D1511B80005D550 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148332DA1D1511B80005D550 /* SystemConfiguration.framework */; };
+		148332DD1D1511F20005D550 /* WeiXin.m in Sources */ = {isa = PBXBuildFile; fileRef = 148332DC1D1511F20005D550 /* WeiXin.m */; };
+		148332E01D1514300005D550 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148332DF1D1514300005D550 /* Security.framework */; };
+		148332E21D1514410005D550 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148332E11D1514410005D550 /* CFNetwork.framework */; };
 		15427CD3198F221400DC375D /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A8A4251834BDA200142BE0 /* libcocos2d iOS.a */; };
 		15427CD5198F222200DC375D /* libluacocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15427CD2198F220600DC375D /* libluacocos2d iOS.a */; };
 		15427CEC198F24A600DC375D /* libluacocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15427CC2198F220600DC375D /* libluacocos2d Mac.a */; };
@@ -262,6 +267,15 @@
 		145593DA1CFDE72D0049C698 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		145593DC1CFDE73F0049C698 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		145593DE1CFDE74E0049C698 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
+		148332D51D15114B0005D550 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		148332D61D15114B0005D550 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		148332D71D15114B0005D550 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		148332D81D15114B0005D550 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		148332DA1D1511B80005D550 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		148332DC1D1511F20005D550 /* WeiXin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiXin.m; sourceTree = "<group>"; };
+		148332DE1D1512040005D550 /* WeiXin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeiXin.h; sourceTree = "<group>"; };
+		148332DF1D1514300005D550 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		148332E11D1514410005D550 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		15427CE2198F237300DC375D /* lua_module_register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua_module_register.h; path = ../Classes/lua_module_register.h; sourceTree = "<group>"; };
 		15A8A4031834BDA200142BE0 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = build/cocos2d_libs.xcodeproj; sourceTree = QUICK_V3_ROOT; };
 		15A8A4871834C90E00142BE0 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
@@ -546,6 +560,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				148332E21D1514410005D550 /* CFNetwork.framework in Frameworks */,
+				148332E01D1514300005D550 /* Security.framework in Frameworks */,
+				148332DB1D1511B80005D550 /* SystemConfiguration.framework in Frameworks */,
 				145593DF1CFDE74E0049C698 /* libsqlite3.tbd in Frameworks */,
 				145593DD1CFDE73F0049C698 /* libz.tbd in Frameworks */,
 				145593DB1CFDE72D0049C698 /* CoreTelephony.framework in Frameworks */,
@@ -560,6 +577,7 @@
 				50805AAF17EBBEAA004CFAD3 /* UIKit.framework in Frameworks */,
 				5023817A17EBBE8300990C9B /* OpenGLES.framework in Frameworks */,
 				F293B3CD15EB7BE500256477 /* QuartzCore.framework in Frameworks */,
+				148332D91D15114B0005D550 /* libWeChatSDK.a in Frameworks */,
 				F293B3D115EB7BE500256477 /* OpenAL.framework in Frameworks */,
 				F293B3D315EB7BE500256477 /* AudioToolbox.framework in Frameworks */,
 				F293B3D515EB7BE500256477 /* AVFoundation.framework in Frameworks */,
@@ -629,10 +647,16 @@
 				5023811317EBBCAC00990C9B /* Info.plist */,
 				5023811417EBBCAC00990C9B /* main.m */,
 				5023811517EBBCAC00990C9B /* Prefix.pch */,
+				148332D51D15114B0005D550 /* libWeChatSDK.a */,
+				148332D61D15114B0005D550 /* WechatAuthSDK.h */,
+				148332D71D15114B0005D550 /* WXApi.h */,
+				148332D81D15114B0005D550 /* WXApiObject.h */,
 				5023811617EBBCAC00990C9B /* RootViewController.h */,
 				5023811717EBBCAC00990C9B /* RootViewController.mm */,
 				145593D21CFDE5650049C698 /* Report.m */,
 				145593D41CFDE57E0049C698 /* Report.h */,
+				148332DC1D1511F20005D550 /* WeiXin.m */,
+				148332DE1D1512040005D550 /* WeiXin.h */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -1114,6 +1138,9 @@
 		F293B3CB15EB7BE500256477 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				148332E11D1514410005D550 /* CFNetwork.framework */,
+				148332DF1D1514300005D550 /* Security.framework */,
+				148332DA1D1511B80005D550 /* SystemConfiguration.framework */,
 				145593DE1CFDE74E0049C698 /* libsqlite3.tbd */,
 				145593DC1CFDE73F0049C698 /* libz.tbd */,
 				145593DA1CFDE72D0049C698 /* CoreTelephony.framework */,
@@ -1459,6 +1486,7 @@
 				9F9106B619F5614900AD5CAB /* CCCrypto.cpp in Sources */,
 				9F91074619F5614900AD5CAB /* SBJsonWriter.m in Sources */,
 				9F9106BC19F5614900AD5CAB /* CCBlurFilter.cpp in Sources */,
+				148332DD1D1511F20005D550 /* WeiXin.m in Sources */,
 				9F91078019F5614900AD5CAB /* lua_zlib.c in Sources */,
 				9F91073219F5614900AD5CAB /* CCCryptoIOS.mm in Sources */,
 				9F91076619F5614900AD5CAB /* CCStorePaymentTransaction.cpp in Sources */,
@@ -1730,7 +1758,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/ios";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheng.MagicCube;
 				PRODUCT_NAME = "平面魔方";
@@ -1748,7 +1776,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: developer_loster@sina.com (WV57L2HGY7)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zed Lee (736PAMN5T8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
@@ -1790,13 +1818,8 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_LDFLAGS = (
-					"-pagezero_size",
-					10000,
-					"-image_base",
-					100000000,
-				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/ios";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cheng.MagicCube;
 				PRODUCT_NAME = "平面魔方";
 				PROVISIONING_PROFILE = "";

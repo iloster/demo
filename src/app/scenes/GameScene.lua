@@ -545,12 +545,22 @@ function GameScene:showGameOver()
 		self:init(LevelData:getCurLevel())
 		dialog:removeSelf()
 	end)
+
 	dialog:setOnRestClick(function()
 		g_Audio:playEffect(AudioConfig.btnClick)
 		self:removeGame()
 		self:init(LevelData:getCurLevel())
 		dialog:removeSelf()
 	end)
+
+	dialog:setOnShareClick(function()
+		g_Audio:playEffect(AudioConfig.btnClick)
+		local data = {}
+		data.desc = string.format(g_Lan:get("GameScene_Share"),self.m_step,LevelData:getCurLevel())
+		g_Native:share(data)
+	end)
+
+
 	dialog:addTo(self,LevelConfig["dialog"])
   end,0.5)
 end

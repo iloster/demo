@@ -31,6 +31,7 @@
 #import "RootViewController.h"
 #import "platform/ios/CCEAGLView-ios.h"
 #import "UMMobClick/MobClick.h"
+#import "WXApi.h"
 @implementation AppController
 
 #pragma mark -
@@ -86,13 +87,13 @@ static AppDelegate s_sharedApplication;
     cocos2d::Director::getInstance()->setOpenGLView(glview);
 
     app->run();
-    [MobClick setLogEnabled:YES];
+    [MobClick setLogEnabled:NO];
     [MobClick setAppVersion:XcodeAppVersion];
     UMConfigInstance.appKey = @"573daf8867e58e5f4a00307b";
     //UMConfigInstance.ChannelId = @"App Store";
     UMConfigInstance.eSType = E_UM_GAME; // 仅适用于游戏场景
     [MobClick startWithConfigure:UMConfigInstance];
-
+    [WXApi registerApp:@"wx77621570881627eb"];//此为申请下来的key一般以wx开头
     return YES;
 }
 

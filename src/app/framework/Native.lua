@@ -9,8 +9,14 @@ end
 --eventId
 --info
 function Native:report(data)
-	if g_System:getPlatform() == kPlatformIOS then
+	if g_System:getPlatform() == kPlatformIOS and DEBUG == 0 then
 		luaoc.callStaticMethod("Report", "eventId",data)
+	end
+end
+
+function Native:share(data)
+	if g_System:getPlatform() == kPlatformIOS then
+		luaoc.callStaticMethod("WeiXin", "onShare",data or "")
 	end
 end
 return Native;

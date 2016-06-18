@@ -19,6 +19,7 @@ function DialogView:ctor(data)
         UILabelType = 2,
         text = g_Lan:get("DialogView_Win"),
         size = 32,
+        dimensions = CCSize(size.width*3/4, 0),
         color = cc.c3b(0,0,0),
         })
     self.m_content:align(display.CENTER,size.width/2,size.height-100)
@@ -70,14 +71,38 @@ function DialogView:ctor(data)
             self.onRestClick()
         end)
 
-     self.m_resetTxt = cc.ui.UILabel.new({
-        UILabelType = 2,
-        text = g_Lan:get("DialogView_Again"),
-        size = 25,
-        color = cc.c3b(0,0,0),
+    
+    self.m_resetTxt = cc.ui.UILabel.new({
+            UILabelType = 2,
+            text = g_Lan:get("DialogView_Again"),
+            size = 25,
+            color = cc.c3b(0,0,0),
         })
     self.m_resetTxt:align(display.CENTER,size.width/4, size.height/2-100)
     self.m_resetTxt:addTo(self.m_dialogBg)
+    if g_System:getLanguage()==kLanCN then
+        local shareBtnImage = {
+            normal = "share_normal.png",
+            pressed = "share_press.png"
+        }
+
+        self.m_shareBtn = cc.ui.UIPushButton.new(shareBtnImage)
+        self.m_shareBtn:align(display.BOTTOM, size.width/3+50, 50)
+        self.m_shareBtn:addTo(self.m_dialogBg)
+        self.m_shareBtn:setScale(1)
+        self.m_shareBtn:onButtonClicked(function()
+                self.onShareClick()
+            end)
+
+         self.m_shareTxt = cc.ui.UILabel.new({
+            UILabelType = 2,
+            text = g_Lan:get("DialogView_Share"),
+            size = 25,
+            color = cc.c3b(0,0,0),
+            })
+        self.m_shareTxt:align(display.BOTTOM,size.width/3+100, 50)
+        self.m_shareTxt:addTo(self.m_dialogBg)
+    end
 end
 
 function DialogView:setOnNextClick(func)
@@ -87,6 +112,11 @@ end
 function DialogView:setOnRestClick(func)
     self.onRestClick = func
 end
+
+function DialogView:setOnShareClick(func)
+    self.onShareClick = func;
+end
+
 function DialogView:setTitle(title)
     self.m_content:setString(title)
 end

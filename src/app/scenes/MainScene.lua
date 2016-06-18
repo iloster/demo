@@ -77,6 +77,7 @@ function MainScene:createBtn()
 				local data = {}
 				data.eventId = "Btn_QuickGame"
 				g_Native:report(data)
+				-- g_Native:share(data)
 				self:toGameScene()
 			end)	
 		:addTo(self,LevelConfig["btn"])
