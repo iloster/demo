@@ -11,8 +11,11 @@ function UIFactory:getTopLayer()
 end
 
 ---创建一个按钮
-function UIFactory:createButton()
-	return 
+--btn images
+function UIFactory:createButton(data)
+	if data then
+		return cc.ui.UIPushButton.new(data)
+	end
 end
 
 

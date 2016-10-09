@@ -4,13 +4,12 @@ function Director:ctor()
 	self.m_scenes = {}
 end
 
-function Director:runWithScene(scene)
+function Director:runWithScene(scene,data)
 	local nowScene = display.getRunningScene().name
 	if scene and nowScene then
 		table.insert(self.m_scenes,nowScene)
 	end
-	dump(self.m_scenes)
-	app:enterScene(scene)
+	app:enterScene(scene,data)
 end
 
 function Director:popScene()

@@ -2,7 +2,8 @@ local AboutScene = class("AboutScene",function()
 	return display.newScene("AboutScene")
 end)
 local wangfa = g_Lan:get("AboutScene_GameInfo")
-function AboutScene:ctor()
+function AboutScene:ctor(data)
+	dump(data,"AboutScene:ctor")
 	self:createBg()
 end
 

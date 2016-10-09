@@ -3,9 +3,11 @@ local LevelScene = class("LevelScene",function()
 end)
 local LevelData = require("app.data.LevelData")
 local AudioConfig = require("app.config.AudioConfig")
-function LevelScene:ctor()
+
+function LevelScene:ctor(data)
 	-- body
-	
+	dump(data)
+	self.m_data = data
 	self:createBg()
 	self:createLevel()
 	self:createBottom()
@@ -21,10 +23,13 @@ end
 
 function LevelScene:createBg()
 	display.newColorLayer(cc.c4b(0xfa,0xf8,0xef, 255)):addTo(self)
-
+	local titleStr = "普通模式"
+	if self.m_data.nMode == kTimeMode then
+		titleStr = "限时模式"
+	end
 	cc.ui.UILabel.new({
 		UILabelType = 2,
-		text = g_Lan:get("LevelScene_ChooseLevel"),
+		text = titleStr..'.'..g_Lan:get("LevelScene_ChooseLevel"),
 		size = 32,
 		color = cc.c3b(0,0, 0) })
 	:align(display.CENTER_TOP, display.left+display.width/2, display.top - 170)
@@ -66,18 +71,16 @@ function LevelScene:createLevel()
 		disabled ="circle_disable.png",
 	}
    local Space = (display.width - 400)/5
+
    self.m_levelBtn = {}
    self.m_levelLabel={}
    local level = LevelData.getLevel()
 
-   for i = 0,7 do
+   for i = 0,11 do
    		local row = i%4 + 1
    		local col = math.floor(i/4) + 1
    		local x = row * Space + (2*row - 1) * 50
-   		local y = display.cy - (col-1) * Space
-   		if col == 1 then
-   			y = display.cy - (-3) * Space
-   		end
+   		local y = display.cy - (4*col -7) *Space + 50
    		--local buttonStatus = ""
 		self.m_levelBtn[i+1] = cc.ui.UIPushButton.new(levelImages)
 		self.m_levelLabel[i+1] = cc.ui.UILabel.new({

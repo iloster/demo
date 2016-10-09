@@ -46,6 +46,7 @@ function GameScene:init(level)
 	self:createGame()
 	self:refreshStep(0)
 	self.m_step = 0
+	self.m_level = level
 end
 
 function GameScene:setMapByLevel(level)
@@ -61,7 +62,6 @@ function GameScene:createBg()
 			  color = cc.c3b(0,0,0),
 			  size= 32
 			})
-	print("sssss"..device.model)
 	if device.model == "ipad" then
 		self.m_stepTxt:align(display.CENTER_TOP, display.cx, display.top-20)
 	else
@@ -128,7 +128,7 @@ function GameScene:refreshStep(step)
 		if step ==0 then
 			self.m_stepTxt:setString(g_Lan:get("GameScene_StartGame"))
 		else
-			self.m_stepTxt:setString(g_Lan:get("GameScene_StepNum")..step)
+			self.m_stepTxt:setString(string.format("第%d关  ",self.m_level)..g_Lan:get("GameScene_StepNum")..step)
 		end
 	end
 end

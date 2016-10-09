@@ -37,7 +37,9 @@ end
 function AppBase:enterScene(sceneName, args, transitionType, time, more)
     local scenePackageName = self.packageRoot .. ".scenes." .. sceneName
     local sceneClass = require(scenePackageName)
-    local scene = sceneClass.new(unpack(checktable(args)))
+    -- local scene = sceneClass.new(unpack(checktable(args)))
+    -- modify by ZedLi 2016 10.9
+    local scene = sceneClass.new(checktable(args))
     display.replaceScene(scene, transitionType, time, more)
 end
 

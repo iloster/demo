@@ -62,7 +62,7 @@ function MainScene:createBtn()
 		pressed = "btn_press.png",
 		disabled = "GreenButton.png",
 	}
-
+	
 	cc.ui.UIPushButton.new(btnImages)
 		--:setButtonSize(250,90)
 		:setButtonLabel("normal", cc.ui.UILabel.new({
@@ -71,7 +71,7 @@ function MainScene:createBtn()
 			 size = 32,
 			 color=cc.c3b(0,0,0)
 		}))
-		:align(display.CENTER, display.cx, display.cy+120)
+		:align(display.CENTER, display.cx, display.cy+160)
 		:onButtonClicked(function(event)
 				g_Audio:playEffect(AudioConfig.btnClick)
 				local data = {}
@@ -90,15 +90,35 @@ function MainScene:createBtn()
 			 size = 32,
 			 color=cc.c3b(0,0,0)
 		}))
-		:align(display.CENTER, display.cx, display.cy-80)
+		:align(display.CENTER, display.cx, display.cy-0)
 		:onButtonClicked(function(event)
 				g_Audio:playEffect(AudioConfig.btnClick)
 				local data = {}
 				data.eventId = "Btn_ChooseLevel"
 				g_Native:report(data)
-				self:toLevelScene()
+				self:toLevelScene({nMode = kNormalMode})
 			end)	
 		:addTo(self,LevelConfig["btn"])
+
+	-- 创建一个新的按钮，用于限时模式
+	cc.ui.UIPushButton.new(btnImages)
+		--:setButtonSize(250,90)
+		:setButtonLabel("normal", cc.ui.UILabel.new({
+			 UILabelType = 2,
+			 text = "限时模式",
+			 size = 32,
+			 color=cc.c3b(0,0,0)
+		}))
+		:align(display.CENTER, display.cx, display.cy-160)
+		:onButtonClicked(function(event)
+				g_Audio:playEffect(AudioConfig.btnClick)
+				local data = {}
+				data.eventId = "Btn_ChooseLevel"
+				g_Native:report(data)
+				self:toLevelScene({nMode = kTimeMode})
+			end)	
+		:addTo(self,LevelConfig["btn"])
+
 end
 
 function MainScene:createBottom()
@@ -140,13 +160,14 @@ function MainScene:toGameScene()
 	g_Director:runWithScene("GameScene")
 end
 
-function MainScene:toLevelScene()
+function MainScene:toLevelScene(data)
 	print("进入LevelScene------------")
-	g_Director:runWithScene("LevelScene")
+	g_Director:runWithScene("LevelScene",{mode = checkint(data.nMode)})
 end
 
+		
 function MainScene:toAboutScene()
 	print("进入About------------")
-	app:enterScene("AboutScene")
+	app:enterScene("AboutScene",{a=1})
 end
 return MainScene

@@ -61,7 +61,7 @@ end
 
 --左右移动
 function LevelData:moveMapRow(data,offset)
-	print("左右移动")
+	-- print("左右移动")
 	local tmp = data[offset][4]
 	data[offset][4] = data[offset][3]
 	data[offset][3] = data[offset][2]
@@ -72,7 +72,7 @@ end
 
 --上下移动
 function LevelData:moveMapCol(data,offset)
-	print("上下移动")
+	-- print("上下移动")
 	local tmp = data[4][offset]
 	data[4][offset] = data[3][offset]
 	data[3][offset] = data[2][offset]

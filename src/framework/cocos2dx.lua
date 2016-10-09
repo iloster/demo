@@ -57,7 +57,6 @@ require(p .. "OpenglConstants")
 require(p .. "Cocos2d")
 require(p .. "StudioConstants")
 end
-
 require(p .. "Event")
 require(p .. "ActionEx")
 require(p .. "NodeEx")
