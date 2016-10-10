@@ -7,6 +7,7 @@ local OrgMap = {
 	[4] = {4,4,4,4},
 }
 
+-- 获取当前已经完成的level
 function LevelData:getLevel()
 	return NativeData:getValeForKey("level","int",1)
 end
@@ -15,6 +16,7 @@ function LevelData:setLevel(level)
 	NativeData:saveValeForKey("level",level,"int")
 end
 
+-- 完成每个level所用的步数
 function LevelData:setStep(level,step)
 	if self:getStep(level) == 0 or step<self:getStep(level) then
 		NativeData:saveValeForKey("level_step_"..level,step,"int")
@@ -47,14 +49,19 @@ function LevelData:createMap(level)
 			tmpMap = self:moveMapCol(tmpMap,math.random(1,4))
 		end
 	end
-	NativeData:saveValeForKey("level_map_"..level,json.encode(tmpMap),"string")
+	-- NativeData:saveValeForKey("level_map_"..level,json.encode(tmpMap),"string")
 	return tmpMap
+end
+
+function LevelData:setMap(level,map)
+	NativeData:saveValeForKey("level_map_"..level,json.encode(map),"string")
 end
 
 function LevelData:getMap(level)
 	local map = json.decode((NativeData:getValeForKey("level_map_"..level,"string","")))
 	if not map then
 		map = self:createMap(level)
+		self:setMap(level,map)
 	end
 	return map
 end
@@ -81,5 +88,26 @@ function LevelData:moveMapCol(data,offset)
 	return data
 end
 
+-- 设置限时模式下的level
+function LevelData:setTimeLevel(level)
+	NativeData:saveValeForKey("time_level",level,"int")
+end
 
+function LevelData:getTimeLevel()
+	return NativeData:getValeForKey("time_level","int",1)	
+end
+
+function LevelData:setTime(level,time)
+	if self:getTime(level) == 0 or time<self:getTime(level) then
+		NativeData:saveValeForKey("level_time_"..level,time,"int")
+	end  
+end
+
+function LevelData:getTime(level)
+	return NativeData:getValeForKey("level_time_"..level,"int",0)
+end
+
+function LevelData:getTimeMap(level)
+	return self:createMap(level)
+end
 return LevelData

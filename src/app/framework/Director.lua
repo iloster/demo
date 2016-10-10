@@ -9,6 +9,7 @@ function Director:runWithScene(scene,data)
 	if scene and nowScene then
 		table.insert(self.m_scenes,nowScene)
 	end
+	dump(nowScene,"nowScene")
 	app:enterScene(scene,data)
 end
 

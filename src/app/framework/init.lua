@@ -5,3 +5,5 @@ g_Audio = require("app.framework.Audio").new()
 g_System = require("app.framework.System").new()
 g_Native = require("app.framework.Native").new()
 g_Lan = require("app.framework.Lan").new()
+
+Scene = require("app.framework.Scene")

@@ -162,7 +162,11 @@ end
 
 function MainScene:toLevelScene(data)
 	print("进入LevelScene------------")
-	g_Director:runWithScene("LevelScene",{mode = checkint(data.nMode)})
+	if data.nMode == kNormalMode then
+		g_Director:runWithScene("LevelScene",{mode = checkint(data.nMode)})
+	else
+		g_Director:runWithScene("TimeLevelScene")
+	end
 end
 
 		
