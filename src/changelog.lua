@@ -8,5 +8,8 @@ local changelog = {
 	4.添加了TimeLevelScene 与之前的LevelScene分开处理
 	5.添加了TimeGameScene
 	
+	2016.10，11
+	6.增加了倒计时
+	7.增加了挑战失败的dialog
  ]]
-}
+}	

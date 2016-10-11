@@ -66,78 +66,21 @@ libpng warning: iCCP: known incorrect sRGB profile
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
 [LUA-print] TimeGameScene
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
-[LUA-print] - "nowScene" = "<unknown-scene>"
+[LUA-print] - "nowScene" = "TimeLevelScene"
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:45: in function 'init'
 [LUA-print] - "<var>" = 1
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getValeForKey'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-can not get file data of src/app/scenes/<unknown-scene>.lua
-[LUA-print] ----------------------------------------
-[LUA-print] LUA ERROR: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:39: module 'app.scenes.<unknown-scene>' not found:
-	no field package.preload['app.scenes.<unknown-scene>']
-	no file './app/scenes/<unknown-scene>.lua'
-	no file '/usr/local/share/luajit-2.1.0-beta1/app/scenes/<unknown-scene>.lua'
-	no file '/usr/local/share/lua/5.1/app/scenes/<unknown-scene>.lua'
-	no file '/usr/local/share/lua/5.1/app/scenes/<unknown-scene>/init.lua'
-	no file '/Users/cheng/Documents/CocosProjects/demo/src/app/scenes/<unknown-scene>.lua'
-	no file 'src/'
-	no file './app/scenes/<unknown-scene>.so'
-	no file '/usr/local/lib/lua/5.1/app/scenes/<unknown-scene>.so'
-	no file '/usr/local/lib/lua/5.1/loadall.so'
-	no file './app.so'
-	no file '/usr/local/lib/lua/5.1/app.so'
-	no file '/usr/local/lib/lua/5.1/loadall.so'
-
-[LUA-print] 
-stack traceback:
-	[C]: in function 'require'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:39: in function 'enterScene'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:20: in function 'popScene'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:110: in function 'click'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:18: in function <[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:17>
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:59: in function 'dispatchEvent'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:124: in function 'listener_'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:428: in function <[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:382>
-[LUA-print] ----------------------------------------
-[LUA-print] 进入LevelScene------------
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
-[LUA-print] - "nowScene" = "MainScene"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTimeLevel'
+[LUA-print] row:-4
+[LUA-print] 4
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:405: in function 'nextMove'
+[LUA-print] - "nextMove" = 1
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:82: in function 'createTimer'
+[LUA-print] - "<var>" = "createTimer"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] TimeGameScene
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
-[LUA-print] - "nowScene" = "<unknown-scene>"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:45: in function 'init'
-[LUA-print] - "<var>" = 1
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getValeForKey'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-can not get file data of src/app/scenes/<unknown-scene>.lua
-[LUA-print] ----------------------------------------
-[LUA-print] LUA ERROR: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:39: module 'app.scenes.<unknown-scene>' not found:
-	no field package.preload['app.scenes.<unknown-scene>']
-	no file './app/scenes/<unknown-scene>.lua'
-	no file '/usr/local/share/luajit-2.1.0-beta1/app/scenes/<unknown-scene>.lua'
-	no file '/usr/local/share/lua/5.1/app/scenes/<unknown-scene>.lua'
-	no file '/usr/local/share/lua/5.1/app/scenes/<unknown-scene>/init.lua'
-	no file '/Users/cheng/Documents/CocosProjects/demo/src/app/scenes/<unknown-scene>.lua'
-	no file 'src/'
-	no file './app/scenes/<unknown-scene>.so'
-	no file '/usr/local/lib/lua/5.1/app/scenes/<unknown-scene>.so'
-	no file '/usr/local/lib/lua/5.1/loadall.so'
-	no file './app.so'
-	no file '/usr/local/lib/lua/5.1/app.so'
-	no file '/usr/local/lib/lua/5.1/loadall.so'
-
-[LUA-print] 
-stack traceback:
-	[C]: in function 'require'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:39: in function 'enterScene'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:20: in function 'popScene'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:110: in function 'click'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:18: in function <[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:17>
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:59: in function 'dispatchEvent'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:124: in function 'listener_'
-	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:428: in function <[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:382>
-[LUA-print] ----------------------------------------
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:6: in function 'ctor'
+[LUA-print] - "<var>" = nil
+CCSize will be not binded in lua,please use the lua's table instead

@@ -5,7 +5,7 @@ function Director:ctor()
 end
 
 function Director:runWithScene(scene,data)
-	local nowScene = display.getRunningScene().name
+	local nowScene = display.getRunningScene().__cname
 	if scene and nowScene then
 		table.insert(self.m_scenes,nowScene)
 	end

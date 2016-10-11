@@ -45,7 +45,6 @@ function TimeGameScene:init(level)
 	dump(level)
 	self:setMapByLevel(level)
 	self:createGame()
-	self:refreshStep(0)
 	self.m_step = 0
 	self.m_level = level
 end
@@ -55,27 +54,63 @@ function TimeGameScene:setMapByLevel(level)
 end 
 
 function TimeGameScene:createStartGame()
-	if self.m_stepTxt then
-		self.m_stepTxt:setVisible(true)
+	self:deleteStartGame()
+	self.m_stepTxt = cc.ui.UILabel.new({
+			 UILabelType = 2,
+			 text = g_Lan:get("GameScene_StartGame"),
+			 color = cc.c3b(0,0,0),
+			 size= 32
+		})
+	if device.model == "ipad" then
+		self.m_stepTxt:align(display.CENTER_TOP, display.cx, display.top-20)
 	else
-		self.m_stepTxt = cc.ui.UILabel.new({
-			  UILabelType = 2,
-			  text = g_Lan:get("GameScene_StartGame"),
-			  color = cc.c3b(0,0,0),
-			  size= 32
-			})
-		if device.model == "ipad" then
-			self.m_stepTxt:align(display.CENTER_TOP, display.cx, display.top-20)
-		else
-			self.m_stepTxt:align(display.CENTER_TOP, display.cx, display.top-display.height/10)
-		end
-		self.m_stepTxt:addTo(self,LevelConfig["btn"])
+		self.m_stepTxt:align(display.CENTER_TOP, display.cx, display.top-display.height/10)
+	end
+	self.m_stepTxt:addTo(self,LevelConfig["btn"])
+	
+end
+
+function TimeGameScene:deleteStartGame()
+	if self.m_stepTxt then
+		--delete(self.m_stepTxt)
+		self.m_stepTxt:removeSelf()
+		self.m_stepTxt = nil
 	end
 end
 
 function TimeGameScene:createTimer()
+	dump("createTimer")
+	self:deleteStartGame()
+	self.m_timerSecond = 3;
+	self.m_timerImg = display.newSprite("timer.png")
+	self.m_timerImg:align(display.CENTER_TOP, display.cx, display.top-display.height/10)
+	self.m_timerImg:setScale(0.5)
+	self.m_timerImg:addTo(self,LevelConfig['btn'])
+	self.m_timerTxt = cc.ui.UILabel.new({
+		 	 UILabelType = 2,
+			 text = self.m_timerSecond.."s",
+			 color = cc.c3b(0,0,0),
+			 size= 60})
+	self.m_timerTxt:align(display.CENTER,100,100)
+	self.m_timerTxt:addTo(self.m_timerImg)
+	self.m_timerHandler = scheduler.scheduleGlobal(function()
+		-- body
+			self.m_timerSecond = self.m_timerSecond - 1
+			self.m_timerTxt:setString(self.m_timerSecond.."s")
+			if self.m_timerSecond <=0 then
+				if not self:checkGameOver() then
+					--todo
+					self:showFailDialog()
+					self:deleteTimer();
+				end
+			end
+	end, 1)	
+end
+
+function TimeGameScene:deleteTimer()
 	if self.m_timerHandler then
 		scheduler.unscheduleGlobal(self.m_timerHandler)
+		self.m_timerHandler = nil
 	end
 end
 
@@ -134,7 +169,8 @@ function TimeGameScene:createBottom()
             g_Audio:playEffect(AudioConfig.btnClick)
 			self:removeGame()
 			self:init(LevelData:getCurLevel())
-			self:refreshStep(0)
+			--self:refreshStep(0)
+			--self:createTimer()
         end)
 end
 --创建步区域
@@ -365,7 +401,11 @@ function TimeGameScene:nextMove()
 			self:moveCol(data.offset)
 		end
 		self.m_step = self.m_step + 1
-		self:refreshStep(self.m_step)
+		--self:refreshStep(self.m_step)
+		dump(self.m_step,"nextMove")
+		if self.m_step == 1 then
+			self:createTimer();
+		end
 	end
 end
 --列
@@ -534,6 +574,7 @@ function TimeGameScene:compare4Num(a,b,c,d)
 end
 
 function TimeGameScene:showGameOver()
+	self:deleteTimer();
 
 	scheduler.performWithDelayGlobal(function()
 	g_Audio:playEffect(AudioConfig.win)
@@ -583,7 +624,39 @@ function TimeGameScene:showGameOver()
 end
 
 
+-- 失败之后弹充值弹框
+function TimeGameScene:showFailDialog()
 
+	scheduler.performWithDelayGlobal(function()
+	g_Audio:playEffect(AudioConfig.win)
+	LevelData:setStep(LevelData:getCurLevel(),self.m_step)
+
+	local data = {}
+	data.eventId = "Level_"..LevelData:getCurLevel()
+	data.counter = self.m_step
+	g_Native:report(data)
+
+	local dialog = app:createView("FailedView",{level = LevelData:getCurLevel()})
+	--dialog:setTitle("恭喜你！"..self.m_step.."步通过第"..LevelData:getCurLevel().."关")
+	-- local titleStr = string.format(g_Lan:get("GameScene_Win"),self.m_step,LevelData:getCurLevel())
+	local titleStr = "很可惜，闯关失败，点击充值，增加时间完成挑战吧！"
+	dialog:setTitle(titleStr)
+	dialog:setOnAddClick(function()
+		g_Audio:playEffect(AudioConfig.btnClick)
+		
+	end)
+
+	dialog:setOnRestClick(function()
+		g_Audio:playEffect(AudioConfig.btnClick)
+		self:removeGame()
+		self:init(LevelData:getCurLevel())
+		dialog:removeSelf()
+	end)
+
+
+	dialog:addTo(self,LevelConfig["dialog"])
+  end,0.5)
+end
 
 
 return TimeGameScene
