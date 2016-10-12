@@ -11,3 +11,5 @@ kLanCN = "cn"
 kNormalMode = 1
 -- 限时模式
 kTimeMode = 2  
+
+kTotalLevel = 12

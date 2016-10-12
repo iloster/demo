@@ -42,6 +42,7 @@ end
 
 function GameScene:init(level)
 	dump(level)
+	self:createLabel(level)
 	self:setMapByLevel(level)
 	self:createGame()
 	self:refreshStep(0)
@@ -53,6 +54,20 @@ function GameScene:setMapByLevel(level)
 	self.m_map = LevelData:getMap(level)
 end 
 
+function GameScene:createLabel(level)
+	dump("createLabel")
+	if not self.m_labelTxt then
+		self.m_labelTxt = cc.ui.UILabel.new({
+				  UILabelType = 2,
+				  text = g_Lan:get("GameScene_StartGame"),
+				  color = cc.c3b(0,0,0),
+				  size= 28
+				})
+		self.m_labelTxt:align(display.LEFT_TOP, 0, display.top)
+		self.m_labelTxt:addTo(self,LevelConfig["btn"]+1)
+	end
+	self.m_labelTxt:setString("普通模式：level "..level)
+end
 --创建游戏背景
 function GameScene:createBg()
 	display.newColorLayer(cc.c4b(0xfa,0xf8,0xef, 255)):addTo(self,LevelConfig["bg"])
@@ -533,7 +548,7 @@ function GameScene:showGameOver()
 	dialog:setTitle(titleStr)
 	dialog:setOnNextClick(function()
 		g_Audio:playEffect(AudioConfig.btnClick)
-		if LevelData:getCurLevel() == 8 then
+		if LevelData:getCurLevel() == kTotalLevel then
 			g_Director:replaceScene("MainScene")
 			return;
 		end

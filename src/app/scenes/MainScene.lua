@@ -14,7 +14,6 @@ function MainScene:ctor()
     --         UILabelType = 2, text = "Hello, World", size = 64})
     --     :align(display.CENTER, display.cx, display.cy)
     --     :addTo(self)
-
     --创建一个背景
     self:createBg()
     self:createBtn()
@@ -86,7 +85,7 @@ function MainScene:createBtn()
 		--:setButtonSize(250,90)
 		:setButtonLabel("normal", cc.ui.UILabel.new({
 			 UILabelType = 2,
-			 text = g_Lan:get("MainScene_ChooseLevel"),
+			 text = "普通模式",
 			 size = 32,
 			 color=cc.c3b(0,0,0)
 		}))

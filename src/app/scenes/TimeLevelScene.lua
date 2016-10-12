@@ -66,7 +66,7 @@ function TimeLevelScene:createLevel()
    -- 获取限时模式下完成level
    local level = LevelData.getTimeLevel()
 
-   for i = 0,11 do
+   for i = 0,kTotalLevel - 1 do
    		local row = i%4 + 1
    		local col = math.floor(i/4) + 1
    		local x = row * Space + (2*row - 1) * 50

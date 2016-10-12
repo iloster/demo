@@ -29,7 +29,7 @@ function FailedView:ctor()
         pressed = "reset_press.png"
     }
     self.m_resetBtn = cc.ui.UIPushButton.new(resetBtnImage)
-    self.m_resetBtn:align(display.CENTER, size.width/4, size.height/2)
+    self.m_resetBtn:align(display.CENTER, size.width/2, size.height/2)
     self.m_resetBtn:addTo(self.m_dialogBg)
     self.m_resetBtn:setScale(1)
     self.m_resetBtn:onButtonClicked(function()
@@ -43,7 +43,7 @@ function FailedView:ctor()
             size = 25,
             color = cc.c3b(0,0,0),
         })
-    self.m_resetTxt:align(display.CENTER,size.width/4, size.height/2-100)
+    self.m_resetTxt:align(display.CENTER,size.width/2, size.height/2-100)
     self.m_resetTxt:addTo(self.m_dialogBg)
 
     local addBtnImages = {
@@ -53,7 +53,7 @@ function FailedView:ctor()
     local addTxt = g_Lan:get("DialogView_Next")
     self.m_addBtn = cc.ui.UIPushButton.new(addBtnImages)
     self.m_addBtn:align(display.CENTER, size.width*3/4, size.height/2)
-    self.m_addBtn:addTo(self.m_dialogBg)
+    --  self.m_addBtn:addTo(self.m_dialogBg)
     self.m_addBtn:setScale(0.5)
     self.m_addBtn:onButtonClicked(function()
             self.onAddClick()
@@ -67,7 +67,7 @@ function FailedView:ctor()
         color = cc.c3b(0,0,0),
         })
     self.m_addTxt:align(display.CENTER,size.width*3/4,size.height/2-100)
-    self.m_addTxt:addTo(self.m_dialogBg)
+    --self.m_addTxt:addTo(self.m_dialogBg)
 end
 
 

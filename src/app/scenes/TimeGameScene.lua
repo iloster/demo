@@ -45,13 +45,30 @@ function TimeGameScene:init(level)
 	dump(level)
 	self:setMapByLevel(level)
 	self:createGame()
+	self:createStartGame();
 	self.m_step = 0
 	self.m_level = level
+	self.m_isGameOver = false
 end
 
 function TimeGameScene:setMapByLevel(level)
 	self.m_map = LevelData:getMap(level)
 end 
+
+function GameScene:createLabel(level)
+	dump("createLabel")
+	if not self.m_labelTxt then
+		self.m_labelTxt = cc.ui.UILabel.new({
+				  UILabelType = 2,
+				  text = g_Lan:get("GameScene_StartGame"),
+				  color = cc.c3b(0,0,0),
+				  size= 28
+				})
+		self.m_labelTxt:align(display.LEFT_TOP, 0, display.top)
+		self.m_labelTxt:addTo(self,LevelConfig["btn"]+1)
+	end
+	self.m_labelTxt:setString("限时模式：level "..level)
+end
 
 function TimeGameScene:createStartGame()
 	self:deleteStartGame()
@@ -81,22 +98,22 @@ end
 function TimeGameScene:createTimer()
 	dump("createTimer")
 	self:deleteStartGame()
-	self.m_timerSecond = 3;
-	self.m_timerImg = display.newSprite("timer.png")
-	self.m_timerImg:align(display.CENTER_TOP, display.cx, display.top-display.height/10)
-	self.m_timerImg:setScale(0.5)
-	self.m_timerImg:addTo(self,LevelConfig['btn'])
+	self.m_timerSecond = LevelData:getTotalTime(LevelData:getCurLevel());
+	-- self.m_timerImg = display.newSprite("timer.png")
+	-- self.m_timerImg:align(display.CENTER_TOP, display.cx, display.top-display.height/10)
+	-- self.m_timerImg:setScale(0.5)
+	-- self.m_timerImg:addTo(self,LevelConfig['btn'])
 	self.m_timerTxt = cc.ui.UILabel.new({
 		 	 UILabelType = 2,
-			 text = self.m_timerSecond.."s",
+			 text = "倒计时: "..self.m_timerSecond.."s",
 			 color = cc.c3b(0,0,0),
 			 size= 60})
-	self.m_timerTxt:align(display.CENTER,100,100)
-	self.m_timerTxt:addTo(self.m_timerImg)
+	self.m_timerTxt:align(display.CENTER,display.cx, display.top-display.height/7)
+	self.m_timerTxt:addTo(self,LevelConfig["btn"])
 	self.m_timerHandler = scheduler.scheduleGlobal(function()
 		-- body
 			self.m_timerSecond = self.m_timerSecond - 1
-			self.m_timerTxt:setString(self.m_timerSecond.."s")
+			self.m_timerTxt:setString("倒计时: "..self.m_timerSecond.."s")
 			if self.m_timerSecond <=0 then
 				if not self:checkGameOver() then
 					--todo
@@ -112,12 +129,15 @@ function TimeGameScene:deleteTimer()
 		scheduler.unscheduleGlobal(self.m_timerHandler)
 		self.m_timerHandler = nil
 	end
+	if self.m_timerTxt then
+		self.m_timerTxt:removeSelf();
+	end
 end
 
 --创建游戏背景
 function TimeGameScene:createBg()
 	display.newColorLayer(cc.c4b(0xfa,0xf8,0xef, 255)):addTo(self,LevelConfig["bg"])
-	self:createStartGame();
+	--self:createStartGame();
 	--游戏区域所占的部分
 	local gameSize= 4*CUBE_SIZE+CUBE_SPACE*3
 	--左边
@@ -574,11 +594,15 @@ function TimeGameScene:compare4Num(a,b,c,d)
 end
 
 function TimeGameScene:showGameOver()
+	if self.m_isGameOver then
+		return false;
+	end
 	self:deleteTimer();
-
+	self.m_isGameOver = true
 	scheduler.performWithDelayGlobal(function()
 	g_Audio:playEffect(AudioConfig.win)
-	LevelData:setStep(LevelData:getCurLevel(),self.m_step)
+	local leftTime = LevelData:getTotalTime(LevelData:getCurLevel()) - self.m_timerSecond + 1
+	LevelData:setTime(LevelData:getCurLevel(),leftTime)
 
 	local data = {}
 	data.eventId = "Level_"..LevelData:getCurLevel()
@@ -587,17 +611,18 @@ function TimeGameScene:showGameOver()
 
 	local dialog = app:createView("DialogView",{level = LevelData:getCurLevel()})
 	--dialog:setTitle("恭喜你！"..self.m_step.."步通过第"..LevelData:getCurLevel().."关")
-	local titleStr = string.format(g_Lan:get("GameScene_Win"),self.m_step,LevelData:getCurLevel())
+	--local titleStr = string.format(g_Lan:get("GameScene_Win"),self.m_step,LevelData:getCurLevel())
+	local titleStr = string.format("恭喜你！%ss通过第%s关",leftTime,LevelData:getCurLevel())
 	dialog:setTitle(titleStr)
 	dialog:setOnNextClick(function()
 		g_Audio:playEffect(AudioConfig.btnClick)
-		if LevelData:getCurLevel() == 8 then
+		if LevelData:getCurLevel() == kTotalLevel then
 			g_Director:replaceScene("MainScene")
 			return;
 		end
 		self:removeGame()
-		if LevelData:getCurLevel() + 1 > LevelData:getLevel() then
-			LevelData:setLevel(LevelData:getCurLevel() + 1)
+		if LevelData:getCurLevel() + 1 > LevelData:getTimeLevel() then
+			LevelData:setTimeLevel(LevelData:getCurLevel() + 1)
 		end
 		LevelData:setCurLevel(LevelData:getCurLevel() + 1)
 		self:init(LevelData:getCurLevel())
@@ -626,7 +651,10 @@ end
 
 -- 失败之后弹充值弹框
 function TimeGameScene:showFailDialog()
-
+	if self.m_isGameOver then
+		return
+	end
+	self.m_isGameOver = true
 	scheduler.performWithDelayGlobal(function()
 	g_Audio:playEffect(AudioConfig.win)
 	LevelData:setStep(LevelData:getCurLevel(),self.m_step)
@@ -639,7 +667,7 @@ function TimeGameScene:showFailDialog()
 	local dialog = app:createView("FailedView",{level = LevelData:getCurLevel()})
 	--dialog:setTitle("恭喜你！"..self.m_step.."步通过第"..LevelData:getCurLevel().."关")
 	-- local titleStr = string.format(g_Lan:get("GameScene_Win"),self.m_step,LevelData:getCurLevel())
-	local titleStr = "很可惜，闯关失败，点击充值，增加时间完成挑战吧！"
+	local titleStr = "很可惜，闯关失败!"
 	dialog:setTitle(titleStr)
 	dialog:setOnAddClick(function()
 		g_Audio:playEffect(AudioConfig.btnClick)

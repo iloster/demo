@@ -19,4 +19,9 @@ function Native:share(data)
 		luaoc.callStaticMethod("WeiXin", "onShare",data or "")
 	end
 end
+
+function Native:pay(data)
+
+end
+
 return Native;

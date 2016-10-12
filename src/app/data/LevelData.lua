@@ -110,4 +110,13 @@ end
 function LevelData:getTimeMap(level)
 	return self:createMap(level)
 end
+
+function LevelData:getTotalTime(level)
+	if level<=6 then
+		return 10*(level-1) + 60
+	else
+		return 180
+	end
+end
+
 return LevelData

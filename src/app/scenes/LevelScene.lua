@@ -24,9 +24,6 @@ end
 function LevelScene:createBg()
 	display.newColorLayer(cc.c4b(0xfa,0xf8,0xef, 255)):addTo(self)
 	local titleStr = "普通模式"
-	if self.m_data.nMode == kTimeMode then
-		titleStr = "限时模式"
-	end
 	cc.ui.UILabel.new({
 		UILabelType = 2,
 		text = titleStr..'.'..g_Lan:get("LevelScene_ChooseLevel"),
@@ -76,7 +73,7 @@ function LevelScene:createLevel()
    self.m_levelLabel={}
    local level = LevelData.getLevel()
 
-   for i = 0,11 do
+   for i = 0,kTotalLevel-1 do
    		local row = i%4 + 1
    		local col = math.floor(i/4) + 1
    		local x = row * Space + (2*row - 1) * 50
