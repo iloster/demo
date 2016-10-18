@@ -29,21 +29,27 @@ function TimeGameScene:ctor()
 	self:createBg()
 	self:createTouchLayer()
 	self:createBottom()
+
 	self:init(LevelData:getCurLevel() or LevelData:getLevel())
 end
 
+function TimeGameScene:dtor()
+	dump("TimerGameScene:dtor")
+end
 function TimeGameScene:onEnter()
 
 end
 
 function TimeGameScene:onExit()
-
+	dump("TimerGameScene:onExit")
+	self:deleteTimer();
 end
 
 
 function TimeGameScene:init(level)
 	dump(level)
 	self:setMapByLevel(level)
+	self:createLabel(level)
 	self:createGame()
 	self:createStartGame();
 	self.m_step = 0
@@ -55,7 +61,7 @@ function TimeGameScene:setMapByLevel(level)
 	self.m_map = LevelData:getMap(level)
 end 
 
-function GameScene:createLabel(level)
+function TimeGameScene:createLabel(level)
 	dump("createLabel")
 	if not self.m_labelTxt then
 		self.m_labelTxt = cc.ui.UILabel.new({
@@ -177,21 +183,19 @@ function TimeGameScene:createBottom()
     		end
     	})
 
-    local resetBtnImage = {
-        normal = "refresh_normal.png",
-        pressed = "refresh_press.png"
-    }
-    self.m_resetBtn = cc.ui.UIPushButton.new(resetBtnImage)
-    self.m_resetBtn:align(display.CENTER_BOTTOM, display.cx, display.bottom+50)
-    self.m_resetBtn:addTo(self,LevelConfig["btn"])
-    self.m_resetBtn:setScale(0.8)
-    self.m_resetBtn:onButtonClicked(function()
-            g_Audio:playEffect(AudioConfig.btnClick)
-			self:removeGame()
-			self:init(LevelData:getCurLevel())
-			--self:refreshStep(0)
-			--self:createTimer()
-        end)
+   --  local resetBtnImage = {
+   --      normal = "refresh_normal.png",
+   --      pressed = "refresh_press.png"
+   --  }
+   --  self.m_resetBtn = cc.ui.UIPushButton.new(resetBtnImage)
+   --  self.m_resetBtn:align(display.CENTER_BOTTOM, display.cx, display.bottom+50)
+   --  self.m_resetBtn:addTo(self,LevelConfig["btn"])
+   --  self.m_resetBtn:setScale(0.8)
+   --  self.m_resetBtn:onButtonClicked(function()
+   --          g_Audio:playEffect(AudioConfig.btnClick)
+			-- self:removeGame()
+			-- self:init(LevelData:getCurLevel())
+   --      end)
 end
 --创建步区域
 function TimeGameScene:refreshStep(step)
@@ -605,7 +609,7 @@ function TimeGameScene:showGameOver()
 	LevelData:setTime(LevelData:getCurLevel(),leftTime)
 
 	local data = {}
-	data.eventId = "Level_"..LevelData:getCurLevel()
+	data.eventId = "Time_Level_"..LevelData:getCurLevel()
 	data.counter = self.m_step
 	g_Native:report(data)
 
@@ -659,10 +663,10 @@ function TimeGameScene:showFailDialog()
 	g_Audio:playEffect(AudioConfig.win)
 	LevelData:setStep(LevelData:getCurLevel(),self.m_step)
 
-	local data = {}
-	data.eventId = "Level_"..LevelData:getCurLevel()
-	data.counter = self.m_step
-	g_Native:report(data)
+	-- local data = {}
+	-- data.eventId = "Time_Level_"..LevelData:getCurLevel()
+	-- data.counter = self.m_step
+	-- g_Native:report(data)
 
 	local dialog = app:createView("FailedView",{level = LevelData:getCurLevel()})
 	--dialog:setTitle("恭喜你！"..self.m_step.."步通过第"..LevelData:getCurLevel().."关")

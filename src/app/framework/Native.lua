@@ -9,6 +9,7 @@ end
 --eventId
 --info
 function Native:report(data)
+	dump(g_System:getPlatform(),"Native:report")
 	if g_System:getPlatform() == kPlatformIOS and DEBUG == 0 then
 		luaoc.callStaticMethod("Report", "eventId",data)
 	end

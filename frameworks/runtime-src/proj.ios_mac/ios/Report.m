@@ -21,6 +21,7 @@
 }
 +(void)eventId:(NSDictionary *) dic{
     NSString *eventId = [dic objectForKey:@"eventId"];
+     NSLog(@"eventId=%@",eventId);
     [MobClick event:eventId];
 }
 

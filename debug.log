@@ -28,7 +28,7 @@ LOAD LUA FILE: /Users/cheng/Documents/CocosProjects/demo/src/main.lua
 [LUA-print]               LOAD QUICK FRAMEWORK
 [LUA-print] ===========================================================
 [LUA-print] [INFO] 
-[LUA-print] [INFO] # DEBUG                        = 1
+[LUA-print] [INFO] # DEBUG                        = 0
 [LUA-print] [INFO] #
 [LUA-print] [INFO] # device.platform              = mac
 [LUA-print] [INFO] # device.model                 = unknown
@@ -60,21 +60,6 @@ libpng warning: iCCP: known incorrect sRGB profile
 [LUA-print] 进入LevelScene------------
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
 [LUA-print] - "nowScene" = "MainScene"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:9: in function 'ctor'
-[LUA-print] - "<var>" = {
-[LUA-print] -     "mode" = 1
-[LUA-print] - }
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getLevel'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] 进入LevelScene------------
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
-[LUA-print] - "nowScene" = "MainScene"
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTimeLevel'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
@@ -83,102 +68,81 @@ libpng warning: iCCP: known incorrect sRGB profile
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] 进入LevelScene------------
+[LUA-print] TimeGameScene
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
-[LUA-print] - "nowScene" = "MainScene"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTimeLevel'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] 进入GameScene------------
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getLevel'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
-[LUA-print] - "nowScene" = "MainScene"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:44: in function 'init'
-[LUA-print] - "<var>" = 3
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:58: in function 'createLabel'
-[LUA-print] - "<var>" = "createLabel"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getValeForKey'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] 进入LevelScene------------
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
-[LUA-print] - "nowScene" = "MainScene"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:9: in function 'ctor'
-[LUA-print] - "<var>" = {
-[LUA-print] -     "mode" = 1
-[LUA-print] - }
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getLevel'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:122: in function 'toGameScene'
-[LUA-print] - "<var>" = nil
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
-[LUA-print] - "nowScene" = "LevelScene"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:44: in function 'init'
+[LUA-print] - "nowScene" = "TimeLevelScene"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:49: in function 'init'
 [LUA-print] - "<var>" = 1
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:58: in function 'createLabel'
-[LUA-print] - "<var>" = "createLabel"
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getValeForKey'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:9: in function 'ctor'
+[LUA-print] col:-2
+[LUA-print] 2
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:427: in function 'nextMove'
+[LUA-print] - "nextMove" = 1
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:103: in function 'createTimer'
+[LUA-print] - "<var>" = "createTimer"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
+[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
+[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:7: in function 'ctor'
 [LUA-print] - "<var>" = {
+[LUA-print] -     "level" = 1
 [LUA-print] - }
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getLevel'
+CCSize will be not binded in lua,please use the lua's table instead
+error:
+     cc.Node:setAnchorPoint argument #2 is 'nil'; 'table' expected.
+
+error:
+     cc.Node:setAnchorPoint argument #2 is 'nil'; 'table' expected.
+
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTimeLevel'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:122: in function 'toGameScene'
-[LUA-print] - "<var>" = nil
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
-[LUA-print] - "nowScene" = "LevelScene"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:44: in function 'init'
-[LUA-print] - "<var>" = 3
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:58: in function 'createLabel'
-[LUA-print] - "<var>" = "createLabel"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getValeForKey'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:9: in function 'ctor'
-[LUA-print] - "<var>" = {
-[LUA-print] - }
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getLevel'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
-[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:122: in function 'toGameScene'
-[LUA-print] - "<var>" = nil
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
-[LUA-print] - "nowScene" = "LevelScene"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:44: in function 'init'
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:49: in function 'init'
 [LUA-print] - "<var>" = 2
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:58: in function 'createLabel'
-[LUA-print] - "<var>" = "createLabel"
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getValeForKey'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] row:-4
-[LUA-print] 4
 [LUA-print] col:-3
 [LUA-print] 3
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:427: in function 'nextMove'
+[LUA-print] - "nextMove" = 1
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:103: in function 'createTimer'
+[LUA-print] - "<var>" = "createTimer"
+[LUA-print] col:3
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:427: in function 'nextMove'
+[LUA-print] - "nextMove" = 2
+[LUA-print] col:-3
+[LUA-print] 3
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:427: in function 'nextMove'
+[LUA-print] - "nextMove" = 3
+[LUA-print] row:3
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:427: in function 'nextMove'
+[LUA-print] - "nextMove" = 4
+[LUA-print] row:-3
+[LUA-print] 3
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:427: in function 'nextMove'
+[LUA-print] - "nextMove" = 5
+[LUA-print] col:3
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:427: in function 'nextMove'
+[LUA-print] - "nextMove" = 6
+[LUA-print] row:4
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:427: in function 'nextMove'
+[LUA-print] - "nextMove" = 7
+[LUA-print] row:-4
+[LUA-print] 4
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:427: in function 'nextMove'
+[LUA-print] - "nextMove" = 8
+[LUA-print] row:-4
+[LUA-print] 4
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:427: in function 'nextMove'
+[LUA-print] - "nextMove" = 9
+[LUA-print] col:-3
+[LUA-print] 3
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:427: in function 'nextMove'
+[LUA-print] - "nextMove" = 10
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:7: in function 'ctor'
 [LUA-print] - "<var>" = {
@@ -191,22 +155,65 @@ error:
 error:
      cc.Node:setAnchorPoint argument #2 is 'nil'; 'table' expected.
 
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getLevel'
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTimeLevel'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:44: in function 'init'
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:49: in function 'init'
 [LUA-print] - "<var>" = 3
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:58: in function 'createLabel'
-[LUA-print] - "<var>" = "createLabel"
 [LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getValeForKey'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:9: in function 'ctor'
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:26: in function 'setContentView'
 [LUA-print] - "<var>" = {
+[LUA-print] -     "height" = 480
+[LUA-print] -     "width"  = 600
 [LUA-print] - }
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getLevel'
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTimeLevel'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
-[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getStep'
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
 [LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'onExit'
+[LUA-print] - "<var>" = "TimerGameScene:onExit"
+[LUA-print] ----------------------------------------
+[LUA-print] LUA ERROR: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:114: invalid 'cobj' in function 'lua_cocos2dx_Node_removeFromParentAndCleanup'
+
+[LUA-print] 
+stack traceback:
+	[C]: in function 'removeFromParent'
+	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:114: in function 'removeSelf'
+	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:137: in function 'deleteTimer'
+	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:44: in function 'onExit'
+	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:145: in function 'listener_'
+	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:428: in function 'EventDispatcher'
+	[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:271: in function <[string "/Users/cheng/Documents/CocosProjects/demo/src..."]:270>
+[LUA-print] ----------------------------------------
+[LUA-print] 进入LevelScene------------
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
+[LUA-print] - "nowScene" = "MainScene"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTimeLevel'
+[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
+[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
+[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
+[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] TimeGameScene
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:12: in function 'runWithScene'
+[LUA-print] - "nowScene" = "TimeLevelScene"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:49: in function 'init'
+[LUA-print] - "<var>" = 3
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getValeForKey'
+[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTimeLevel'
+[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
+[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
+[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'getTime'
+[LUA-print] - "<var>" = "/Users/cheng/Library/Caches/UserDefault.xml"
+[LUA-print] dump from: [string "/Users/cheng/Documents/CocosProjects/demo/src..."]:43: in function 'onExit'
+[LUA-print] - "<var>" = "TimerGameScene:onExit"
